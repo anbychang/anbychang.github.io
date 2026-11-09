@@ -1,6 +1,6 @@
 # Anby's Judge
 
-公開網站：[https://judge.lilac-sky-7383.chatgpt.site](https://judge.lilac-sky-7383.chatgpt.site)
+公開網站：[https://anbychang.github.io](https://anbychang.github.io)
 
 這是練習用 C++20 線上判題網站。朋友拿到連結即可選題、貼程式、看判題結果，不需要帳號或安裝編譯器。網站使用 Judge0 執行程式；每次提交編譯一次，同次提交的測資以獨立子行程執行。
 
@@ -35,7 +35,6 @@ dist/
       01.in
       01.out
       ...
-.openai/hosting.json      既有 Sites 專案設定
 ```
 
 每個題目有自己的資料夾。`01.in` 是第一筆測資的標準輸入，`01.out` 是對應的參考輸出；第二筆用 `02.in`、`02.out`，依此類推。題號由 `problems.json` 的順序自動產生，從 `01` 起算；題數超過 99 時會顯示完整數字。調整題目順序會改變顯示題號，但題目 ID 和資料夾名稱應保持穩定。
@@ -46,7 +45,7 @@ dist/
 2. 放入 `statement.html`，以及從 `01.in`、`01.out` 開始連續編號的測資。輸入與輸出都使用 UTF-8 文字檔。
 3. 在 `dist/problems.json` 陣列最後加一筆，填入唯一的 `id`、`title`、`category`、`path`、`cases` 與 `checker`。`path` 例如 `problems/my-problem`；`cases` 是測資筆數。
 4. 一般只有一組標準答案的題目，使用 `"checker": "exact"`。它會按空白分割後逐項比對 `.out`。若答案不唯一，需在 `dist/judge-worker.js` 的 `validOutput` 加入專用驗證規則；Two Sum 的 `two_sum` 是現成例子。
-5. 在本機預覽並測試 AC、WA、CE，接著同步到 GitHub 與既有 Sites 網站。
+5. 在本機預覽並測試 AC、WA、CE，接著提交並推送到 GitHub 的 main 分支。GitHub Actions 會自動發布網站。
 
 範例題目設定：
 
@@ -76,4 +75,6 @@ python -m http.server 8000 --directory dist
 
 ## 發布
 
-目前公開網址由 Sites 提供，Sites 的來源儲存在其管理的 Git 儲存庫，並非 GitHub Pages。更新網站時需將來源同步到既有 Sites 專案，儲存版本並發布；`.openai/hosting.json` 中的 `project_id` 不可改成新值。若也要在 GitHub 保留檔案，需另外推送同一份專案；單純推到 GitHub 不會自動更新目前的網站。
+這個網站由 GitHub Pages 直接從公開倉庫 [anbychang/anbychang.github.io](https://github.com/anbychang/anbychang.github.io) 發布。將變更推送到 `main` 後，`.github/workflows/pages.yml` 會把 `dist/` 上傳並部署。查看 GitHub Actions 的執行結果，成功後到 [https://anbychang.github.io](https://anbychang.github.io) 確認。
+
+舊的 Sites 網址是過渡用網址；往後以 GitHub 倉庫和 GitHub Pages 為準，不必再同步兩份網站來源。
