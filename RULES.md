@@ -43,7 +43,7 @@ This repository file is the project specification. Update the relevant section w
 - Follow the AtCoder-style order: known time limit and score metadata below the page title, then Problem Statement, Constraints, Input, Output, then numbered Sample Input and Sample Output sections. Omit unknown metadata, including memory limits. Add a short explanation after each sample when the answer needs explanation.
 - Define terms and tie-breaking rules in Problem Statement. Put each numeric limit in a Constraints list. Show the exact standard-input format in a code block under Input. Describe the accepted output, including multiple valid outputs or an empty answer, under Output.
 - Use short, precise English. Keep the source problem's meaning and numeric limits; do not invent time limits or constraints. Describe this site's actual standard-input and standard-output contract, even when a reference site uses a function signature.
-- Match each sample to its `.in` and `.out` pair and check any claim made in the explanation. Each sample input and output has a working Copy button. Write original wording; use other judges for structure, not copied text.
+- Match each sample to its `.in` and `.out` pair and check any claim made in the explanation. Show sample input and output as plain preformatted text, without extra controls. Write original wording; use other judges for structure, not copied text.
 
 ## `docs/problems/<slug>/*.in` and `*.out`: tests
 
@@ -60,7 +60,7 @@ This repository file is the project specification. Update the relevant section w
 ## `docs/style.css`: visual rules
 
 - Use one restrained light visual system. The problem list follows the compact structure of a coding problem list without copying another site's brand or artwork.
-- Give statement section headings clear hierarchy. Show constraints as a list, put a divider before samples, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing. Keep Copy buttons beside sample headings.
+- Give statement section headings clear hierarchy. Show constraints as a list, put a divider before samples, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
 - Keep keyboard focus visible and layouts readable on narrow screens. Remove styles when their elements are removed.
 
 ## `README.md`, `.gitignore`, and publishing

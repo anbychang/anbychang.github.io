@@ -90,10 +90,6 @@ h2 { margin: 0; font-size: 18px; font-weight: 690; line-height: 1.35; letter-spa
 .statement ul { margin: 0 0 14px; padding-left: 22px; }
 .statement li { margin: 5px 0; }
 .statement hr { border: 0; border-top: 1px solid #e8eaee; margin: 27px 0 22px; }
-.sample-heading { display: flex; align-items: center; gap: 8px; margin: 23px 0 8px; }
-.sample-heading h3 { margin: 0; }
-.copy-sample { padding: 3px 7px; border: 1px solid #d9dde4; border-radius: 4px; background: #fff; color: #657080; font-size: 10px; }
-.copy-sample:hover { background: #f3f5f8; }
 code { padding: 2px 4px; border-radius: 3px; background: #f2f3f5; color: #3d4758; font-family: "Cascadia Code", Consolas, monospace; }
 pre { font-family: "Cascadia Code", Consolas, monospace; }
 .statement pre {
