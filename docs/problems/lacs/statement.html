@@ -1,22 +1,22 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h3>Problem Statement</h3>
-<p>You are given two integer sequences <code>S1</code> and <code>S2</code>. A subsequence is formed by deleting zero or more elements without changing the order of the remaining elements.</p>
-<p>Choose a subsequence <code>A</code> of <code>S1</code> and a subsequence <code>B</code> of <code>S2</code>. They must have the same length, and <code>|A[i] - B[i]| &le; 1</code> at every position.</p>
-<p>Maximize their length. If several choices have the maximum length, print the lexicographically largest <code>A</code>. To compare two sequences, look at their first different element; the sequence with the larger element is lexicographically larger.</p>
+<p>You are given two sequences of integers: <var>S<sub>1</sub> = (s<sub>1,1</sub>, ..., s<sub>1,L₁</sub>)</var> of length <var>L<sub>1</sub></var>, and <var>S<sub>2</sub> = (s<sub>2,1</sub>, ..., s<sub>2,L₂</sub>)</var> of length <var>L<sub>2</sub></var>. A subsequence is obtained by deleting zero or more elements without changing the order of the remaining elements.</p>
+<p>Choose a subsequence <var>S<sub>1</sub><sup>′</sup> = (s<sup>′</sup><sub>1,1</sub>, ..., s<sup>′</sup><sub>1,K</sub>)</var> of <var>S<sub>1</sub></var> and a subsequence <var>S<sub>2</sub><sup>′</sup> = (s<sup>′</sup><sub>2,1</sub>, ..., s<sup>′</sup><sub>2,K</sub>)</var> of <var>S<sub>2</sub></var>. Both have length <var>K</var>. For every integer <var>i</var> with <var>1 &le; i &le; K</var>, they must satisfy <var>|s<sup>′</sup><sub>1,i</sub> − s<sup>′</sup><sub>2,i</sub>| &le; 1</var>.</p>
+<p>Maximize <var>K</var>. If several choices have the maximum length, print the lexicographically largest <var>S<sub>1</sub><sup>′</sup></var>. Two sequences of equal length are compared at the first position where they differ; the one with the larger element is lexicographically larger.</p>
 
 <h3>Constraints</h3>
 <ul>
-  <li>Each sequence contains between 1 and 1500 integers.</li>
-  <li>Every element is an integer between 0 and 9.</li>
+  <li><var>1 &le; L<sub>1</sub>, L<sub>2</sub> &le; 1500</var></li>
+  <li>Every element of <var>S<sub>1</sub></var> and <var>S<sub>2</sub></var> is an integer between 0 and 9.</li>
 </ul>
 
 <h3>Input</h3>
-<p>The input is given in the following format. The first line contains <code>S1</code>, and the second line contains <code>S2</code>. Integers on each line are separated by spaces.</p>
-<pre class="input-format">S1[1] S1[2] ... S1[n]
-S2[1] S2[2] ... S2[m]</pre>
+<p>The input is given in the following format. The first line contains <var>S<sub>1</sub></var> and the second line contains <var>S<sub>2</sub></var>. Each line contains space-separated integers.</p>
+<pre class="input-format"><var>s<sub>1,1</sub></var> <var>s<sub>1,2</sub></var> ... <var>s<sub>1,L₁</sub></var>
+<var>s<sub>2,1</sub></var> <var>s<sub>2,2</sub></var> ... <var>s<sub>2,L₂</sub></var></pre>
 
 <h3>Output</h3>
-<p>Print the selected subsequence <code>A</code> on one line, with spaces between its elements. If no elements can be paired, print an empty line.</p>
+<p>Print the elements of <var>S<sub>1</sub><sup>′</sup></var> on one line, separated by spaces. If <var>K = 0</var>, print an empty line.</p>
 
 <hr>
 <h3>Sample Input 1</h3>
@@ -24,4 +24,4 @@ S2[1] S2[2] ... S2[m]</pre>
 3 5 4 5 7 3</pre>
 <h3>Sample Output 1</h3>
 <pre>2 5 7 4</pre>
-<p><code>A = [2, 5, 7, 4]</code> can be paired with <code>B = [3, 5, 7, 3]</code>. Their length is 4, which is maximum. Among all valid choices of length 4, this <code>A</code> is lexicographically largest.</p>
+<p>One valid pair is <var>S<sub>1</sub><sup>′</sup> = (2, 5, 7, 4)</var> and <var>S<sub>2</sub><sup>′</sup> = (3, 5, 7, 3)</var>. Here <var>K = 4</var>, the maximum possible length. Among the choices of this length, the shown <var>S<sub>1</sub><sup>′</sup></var> is lexicographically largest.</p>

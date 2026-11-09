@@ -1,22 +1,22 @@
 <p class="statement-meta">Time Limit: 3 sec per test case</p>
 <h3>Problem Statement</h3>
-<p>You are given an array <code>a</code> of <code>n</code> integers and an integer <code>target</code>. Find two different indices <code>i</code> and <code>j</code> such that <code>a[i] + a[j] = target</code>.</p>
-<p>At least one valid pair exists. If several pairs are valid, you may print any one of them.</p>
+<p>You are given <var>N</var> integers <var>A<sub>1</sub>, A<sub>2</sub>, …, A<sub>N</sub></var> and an integer <var>X</var>. Find two indices <var>i</var> and <var>j</var> such that <var>1 &le; i &lt; j &le; N</var> and <var>A<sub>i</sub> + A<sub>j</sub> = X</var>.</p>
+<p>At least one valid pair exists. If there are several valid pairs, print any one of them.</p>
 
 <h3>Constraints</h3>
 <ul>
-  <li><code>2 &le; n &le; 2000</code></li>
-  <li><code>-10<sup>9</sup> &le; a[i] &le; 10<sup>9</sup></code></li>
+  <li><var>2 &le; N &le; 2000</var></li>
+  <li><var>−10<sup>9</sup> &le; A<sub>i</sub> &le; 10<sup>9</sup></var> for every <var>i</var>.</li>
   <li>All input values are integers.</li>
 </ul>
 
 <h3>Input</h3>
 <p>The input is given in the following format:</p>
-<pre class="input-format">n target
-a[1] a[2] ... a[n]</pre>
+<pre class="input-format"><var>N</var> <var>X</var>
+<var>A<sub>1</sub></var> <var>A<sub>2</sub></var> ... <var>A<sub>N</sub></var></pre>
 
 <h3>Output</h3>
-<p>Print two 1-based indices <code>i j</code> such that <code>1 &le; i &lt; j &le; n</code> and <code>a[i] + a[j] = target</code>.</p>
+<p>Print two 1-based indices <var>i</var> and <var>j</var>, separated by a space, satisfying <var>1 &le; i &lt; j &le; N</var> and <var>A<sub>i</sub> + A<sub>j</sub> = X</var>.</p>
 
 <hr>
 <h3>Sample Input 1</h3>
@@ -24,4 +24,4 @@ a[1] a[2] ... a[n]</pre>
 2 7 11 15</pre>
 <h3>Sample Output 1</h3>
 <pre>1 2</pre>
-<p>The values at positions 1 and 2 are 2 and 7. Their sum is 9.</p>
+<p><var>A<sub>1</sub> + A<sub>2</sub> = 2 + 7 = 9 = X</var>, so <var>(i, j) = (1, 2)</var> is a valid answer.</p>
