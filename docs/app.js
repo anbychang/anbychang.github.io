@@ -1,7 +1,5 @@
 const template = "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    \n}";
 
-const problemList = document.getElementById("problem-list");
-const problemCount = document.getElementById("problem-count");
 const statement = document.getElementById("statement");
 const code = document.getElementById("source-code");
 const title = document.getElementById("problem-title");
@@ -18,16 +16,11 @@ const progressTrack = document.getElementById("progress-track");
 const progressFill = document.getElementById("progress-fill");
 const progressStage = document.getElementById("progress-stage");
 const progressElapsed = document.getElementById("progress-elapsed");
-const drafts = {};
-
-let problems = [];
-let tabs = [];
 let activeProblem = null;
 let worker = null;
 let timeout = null;
 let clock = null;
 let startedAt = 0;
-let completedCases = 0;
 let totalCases = 0;
 
 code.value = template;
@@ -49,7 +42,6 @@ function updateElapsed() {
 }
 
 function setProgress(completed, total, label, stage) {
-  completedCases = completed;
   totalCases = total;
   progress.hidden = false;
   progressLabel.textContent = label;
@@ -81,25 +73,14 @@ function fail(label, message, extra = "") {
   setResult(label, message, extra, "fail");
 }
 
-async function selectProblem(problem, updateUrl) {
-  if (worker) return;
-  if (activeProblem) drafts[activeProblem.id] = code.value;
+async function selectProblem(problem, number, total) {
   activeProblem = problem;
-  const index = problems.indexOf(problem);
-  for (const tab of tabs) {
-    const selected = tab.dataset.problem === problem.id;
-    tab.classList.toggle("active", selected);
-    if (selected) tab.setAttribute("aria-current", "true");
-    else tab.removeAttribute("aria-current");
-  }
   title.textContent = problem.title;
   document.title = problem.title + " · Anby's Judge";
-  badge.textContent = formatNumber(index + 1) + " / " + formatNumber(problems.length);
-  code.value = drafts[problem.id];
+  badge.textContent = formatNumber(number) + " / " + formatNumber(total);
   progress.hidden = true;
   statement.textContent = "正在載入題目...";
   setResult("尚未送出", "送出程式碼後，結果會顯示在這裡。");
-  if (updateUrl) history.pushState(null, "", "./problem.html?id=" + encodeURIComponent(problem.id));
 
   try {
     const response = await fetch("./" + problem.path + "/statement.html");
@@ -115,43 +96,18 @@ async function loadProblems() {
   try {
     const response = await fetch("./problems.json");
     if (!response.ok) throw new Error("題目總目錄讀取失敗。");
-    problems = await response.json();
+    const problems = await response.json();
     if (!problems.length) throw new Error("尚無題目。");
-    problemCount.textContent = formatNumber(problems.length);
-    problems.forEach((problem, index) => {
-      drafts[problem.id] = template;
-      const tab = document.createElement("button");
-      tab.className = "problem-tab";
-      tab.type = "button";
-      tab.dataset.problem = problem.id;
-      const number = document.createElement("span");
-      number.className = "problem-number";
-      number.textContent = formatNumber(index + 1);
-      const details = document.createElement("span");
-      const name = document.createElement("strong");
-      name.textContent = problem.title;
-      const category = document.createElement("small");
-      category.textContent = problem.category;
-      details.append(name, category);
-      tab.append(number, details);
-      tab.addEventListener("click", () => selectProblem(problem, true));
-      problemList.append(tab);
-      tabs.push(tab);
-    });
     const requestedId = new URLSearchParams(location.search).get("id");
-    await selectProblem(problems.find((item) => item.id === requestedId) || problems[0], false);
+    const index = requestedId === null ? 0 : problems.findIndex((item) => item.id === requestedId);
+    if (index < 0) throw new Error("找不到指定的題目。請返回總目錄。");
+    await selectProblem(problems[index], index + 1, problems.length);
     runButton.disabled = false;
   } catch (error) {
     title.textContent = "題目載入失敗";
     statement.textContent = String(error);
   }
 }
-
-window.addEventListener("popstate", () => {
-  const id = new URLSearchParams(location.search).get("id");
-  const problem = problems.find((item) => item.id === id);
-  if (problem) selectProblem(problem, false);
-});
 
 loadProblems();
 
@@ -163,7 +119,7 @@ runButton.addEventListener("click", () => {
     return;
   }
 
-  drafts[activeProblem.id] = code.value;
+  const submittedCode = code.value;
   startedAt = Date.now();
   progressElapsed.textContent = "00:00";
   progress.classList.add("running");
@@ -181,7 +137,7 @@ runButton.addEventListener("click", () => {
     if (!worker) return;
     if (data.type === "ready") {
       setProgress(0, 0, "連線中", "正在準備測資");
-      worker.postMessage({ problem: activeProblem.id, code: drafts[activeProblem.id] });
+      worker.postMessage({ problem: activeProblem.id, code: submittedCode });
     } else if (data.type === "batch") {
       setProgress(0, data.total, "遠端判題中", "正在編譯一次並執行全部測資");
       setResult("判題中", "正在等待 Judge0 回傳結果。", "", "pending");

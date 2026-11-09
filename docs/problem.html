@@ -9,28 +9,14 @@
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./app.js"></script>
 </head>
-<body>
+<body class="problem-page">
   <header class="site-header">
     <div class="brand"><span class="brand-mark">AJ</span><span>Anby's Judge</span></div>
-    <span class="header-note">C++20 · 線上判題</span>
+    <a class="directory-link" href="./index.html">返回題目總目錄</a>
   </header>
 
   <main>
-    <div class="intro">
-      <div>
-        <p class="eyebrow">PERSONAL ONLINE JUDGE</p>
-        <h1>線上判題</h1>
-      </div>
-      <p>選題、貼上 C++ 程式、送出。無需帳號或安裝編譯器。</p>
-    </div>
-
     <div class="workspace">
-      <aside class="sidebar" aria-label="題目列表">
-        <a class="directory-link" href="./index.html">題目總目錄</a>
-        <p class="section-label">題目列表 <span id="problem-count"></span></p>
-        <div id="problem-list"></div>
-      </aside>
-
       <div class="main-column">
         <section class="panel statement-panel" aria-labelledby="problem-title">
           <div class="panel-heading"><div><p class="section-label">PROBLEM</p><h2 id="problem-title">載入題目中</h2></div><span id="problem-badge" class="badge"></span></div>
@@ -59,7 +45,7 @@ int main() {
 
         <section class="panel result-panel" aria-labelledby="result-title">
           <div class="panel-heading"><div><p class="section-label">RESULT</p><h2 id="result-title">判題結果</h2></div><span id="verdict" class="verdict neutral">尚未送出</span></div>
-          <p id="status" class="status" role="status" aria-live="polite">選擇題目並送出程式碼後，結果會顯示在這裡。</p>
+          <p id="status" class="status" role="status" aria-live="polite">送出程式碼後，結果會顯示在這裡。</p>
           <pre id="detail" class="detail" hidden></pre>
         </section>
       </div>

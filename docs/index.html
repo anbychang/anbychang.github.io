@@ -17,8 +17,15 @@
     <p class="section-label">PROBLEM DIRECTORY</p>
     <h1>題目總目錄</h1>
     <p class="catalog-description">選擇題目，貼上 C++20 程式，直接在線上判題。</p>
+    <label class="sr-only" for="problem-search">搜尋題目或題號</label>
+    <input id="problem-search" class="catalog-search" type="search" placeholder="搜尋題目、分類或題號" autocomplete="off">
     <div class="catalog-heading"><span>題目</span><span id="problem-count"></span></div>
     <div id="problem-list" class="catalog-list" aria-live="polite">正在載入題目...</div>
+    <nav id="pagination" class="pagination" aria-label="題目分頁" hidden>
+      <button id="previous-page" type="button">上一頁</button>
+      <span id="page-status"></span>
+      <button id="next-page" type="button">下一頁</button>
+    </nav>
   </main>
 </body>
 </html>

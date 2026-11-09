@@ -1,53 +1,21 @@
 # Anby's Judge
 
-公開網站：[https://anbychang.github.io](https://anbychang.github.io)
+網站：[https://anbychang.github.io/](https://anbychang.github.io/)
 
-這是練習用 C++20 線上判題網站。朋友拿到連結即可選題、貼程式、看判題結果，不需要帳號或安裝編譯器。網站使用 Judge0 執行程式；每次提交編譯一次，同次提交的測資以獨立子行程執行。
+公開的 C++20 練習判題網站。選題、貼上程式、送出即可使用；不需要帳號。程式由 Judge0 編譯一次，再逐筆執行測資。程式碼與提交紀錄不會保存。
 
-## 使用網站
+## 檔案規則
 
-1. 開啟首頁的題目總目錄。
-2. 選一題，貼上完整的 C++20 程式。
-3. 按「送出判題」，查看 AC、WA、CE、RE、TLE 或 ERROR。
-4. 離開或重新整理前，複製需要保留的程式碼。網站不儲存提交紀錄。
-
-ERROR 表示服務或判題流程有問題，不能當作答案錯誤。測資會隨靜態網站提供給瀏覽器，因此這是練習網站，不適合保密測資的正式競賽。
-
-## 專案結構
-
-```text
-dist/
-  index.html              題目總目錄
-  problem.html            題目與提交頁
-  problems.json           題目順序、名稱、測資數量與驗證方式
-  catalog.js              總目錄畫面
-  app.js                  題目切換、提交與進度
-  judge-worker.js         載入測資、呼叫 Judge0、驗證答案
-  style.css               網頁樣式
-  problems/
-    lacs/
-      statement.html
-      01.in
-      01.out
-      ...
-    two-sum/
-      statement.html
-      01.in
-      01.out
-      ...
-```
-
-每個題目有自己的資料夾。`01.in` 是第一筆測資的標準輸入，`01.out` 是對應的參考輸出；第二筆用 `02.in`、`02.out`，依此類推。題號由 `problems.json` 的順序自動產生，從 `01` 起算；題數超過 99 時會顯示完整數字。調整題目順序會改變顯示題號，但題目 ID 和資料夾名稱應保持穩定。
+- `docs/` 是完整網站，也是 GitHub Pages 的發布來源。
+- `docs/problems.json` 是唯一的題目總表。陣列順序就是顯示題號，題號從 `01` 開始，超過 99 題仍會顯示完整數字。題目 `id` 應固定且唯一。
+- 每題一個 `docs/problems/<slug>/` 資料夾，內含 `statement.html` 與從 `01.in`、`01.out` 開始連續編號的 UTF-8 測資。
+- 總目錄的 `03` 至 `22` 是 20 個排版預留位置，沒有題目檔案，也不能點擊。新增真題會依序取代預留位置；題數沒有 22 題上限。搜尋與分頁只顯示當前頁的卡片。
+- 一般題目使用 `"checker": "exact"`，會按空白切分後比對輸出；多解題須在 `docs/judge-worker.js` 加入專用驗證規則。
 
 ## 新增題目
 
-1. 在 `dist/problems/` 建立新資料夾，例如 `my-problem`。
-2. 放入 `statement.html`，以及從 `01.in`、`01.out` 開始連續編號的測資。輸入與輸出都使用 UTF-8 文字檔。
-3. 在 `dist/problems.json` 陣列最後加一筆，填入唯一的 `id`、`title`、`category`、`path`、`cases` 與 `checker`。`path` 例如 `problems/my-problem`；`cases` 是測資筆數。
-4. 一般只有一組標準答案的題目，使用 `"checker": "exact"`。它會按空白分割後逐項比對 `.out`。若答案不唯一，需在 `dist/judge-worker.js` 的 `validOutput` 加入專用驗證規則；Two Sum 的 `two_sum` 是現成例子。
-5. 在本機預覽並測試 AC、WA、CE，接著提交並推送到 GitHub 的 main 分支。GitHub Actions 會自動發布網站。
-
-範例題目設定：
+1. 建立 `docs/problems/<slug>/statement.html` 與 `01.in`、`01.out` 等測資。
+2. 在 `docs/problems.json` 最後加入一筆：
 
 ```json
 {
@@ -55,26 +23,12 @@ dist/
   "title": "我的新題目",
   "category": "動態規劃",
   "path": "problems/my-problem",
-  "cases": 3,
+  "cases": 1,
   "checker": "exact"
 }
 ```
 
-## 本機檢查與預覽
+3. 在專案根目錄執行 `python -m http.server 8000 --directory docs`，開啟 `http://localhost:8000/` 檢查題目與判題。直接開啟 HTML 檔無法載入測資。
+4. 將變更推送到 `main`。GitHub Pages 直接從 `main/docs` 自動發布，不需另外同步網站。
 
-在專案根目錄執行：
-
-```powershell
-node --check dist/catalog.js
-node --check dist/app.js
-node --check dist/judge-worker.js
-python -m http.server 8000 --directory dist
-```
-
-瀏覽器開啟 `http://localhost:8000`。判題仍需連線到 Judge0。直接雙擊 HTML 檔無法正常載入題目與測資，請用本機 HTTP 伺服器預覽。
-
-## 發布
-
-這個網站由 GitHub Pages 直接從公開倉庫 [anbychang/anbychang.github.io](https://github.com/anbychang/anbychang.github.io) 發布。將變更推送到 `main` 後，`.github/workflows/pages.yml` 會把 `dist/` 上傳並部署。查看 GitHub Actions 的執行結果，成功後到 [https://anbychang.github.io](https://anbychang.github.io) 確認。
-
-舊的 Sites 網址是過渡用網址；往後以 GitHub 倉庫和 GitHub Pages 為準，不必再同步兩份網站來源。
+測資是公開網站檔案，因此這個網站適合個人練習，不適合需要保密測資的正式競賽。
