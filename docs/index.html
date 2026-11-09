@@ -1,30 +1,28 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3f5f9">
-  <title>題目總目錄 · Anby's Judge</title>
-  <meta name="description" content="Anby's Judge 線上 C++20 練習題總目錄。">
+  <title>Problems · Anby's Judge</title>
+  <meta name="description" content="C++20 practice problems on Anby's Judge.">
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./catalog.js"></script>
 </head>
 <body class="catalog-page">
   <header class="site-header">
-    <div class="brand"><span class="brand-mark">AJ</span><span>Anby's Judge</span></div>
+    <a class="brand" href="./index.html" aria-label="Anby's Judge home"><span class="brand-mark">AJ</span><span>Anby's Judge</span></a>
   </header>
   <main class="catalog-main">
-    <p class="section-label">PROBLEM DIRECTORY</p>
-    <h1>題目總目錄</h1>
-    <p class="catalog-description">選擇題目，貼上 C++20 程式，直接在線上判題。</p>
-    <label class="sr-only" for="problem-search">搜尋題目或題號</label>
-    <input id="problem-search" class="catalog-search" type="search" placeholder="搜尋題目、分類或題號" autocomplete="off">
-    <div class="catalog-heading"><span>題目</span><span id="problem-count"></span></div>
-    <div id="problem-list" class="catalog-list" aria-live="polite">正在載入題目...</div>
-    <nav id="pagination" class="pagination" aria-label="題目分頁" hidden>
-      <button id="previous-page" type="button">上一頁</button>
+    <h1>Problems</h1>
+    <label class="sr-only" for="problem-search">Search problems</label>
+    <input id="problem-search" class="catalog-search" type="search" placeholder="Search problems" autocomplete="off">
+    <div class="list-heading"><span>#</span><span>Title</span><span>Topic</span></div>
+    <ol id="problem-list" class="catalog-list" aria-live="polite"><li class="empty-list">Loading...</li></ol>
+    <nav id="pagination" class="pagination" aria-label="Problem pages" hidden>
+      <button id="previous-page" type="button">Previous</button>
       <span id="page-status"></span>
-      <button id="next-page" type="button">下一頁</button>
+      <button id="next-page" type="button">Next</button>
     </nav>
   </main>
 </body>

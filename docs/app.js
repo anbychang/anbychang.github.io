@@ -45,7 +45,7 @@ function setProgress(completed, total, label, stage) {
   totalCases = total;
   progress.hidden = false;
   progressLabel.textContent = label;
-  progressCount.textContent = total ? completed + " / " + total : "準備中";
+  progressCount.textContent = total ? completed + " / " + total : "Starting";
   progressStage.textContent = stage;
   progressTrack.setAttribute("aria-valuemax", String(total || 1));
   progressTrack.setAttribute("aria-valuenow", String(completed));
@@ -69,7 +69,7 @@ function stopWorker() {
 
 function fail(label, message, extra = "") {
   stopWorker();
-  finishProgress("判題中斷", message);
+  finishProgress("Stopped", message);
   setResult(label, message, extra, "fail");
 }
 
@@ -79,32 +79,32 @@ async function selectProblem(problem, number, total) {
   document.title = problem.title + " · Anby's Judge";
   badge.textContent = formatNumber(number) + " / " + formatNumber(total);
   progress.hidden = true;
-  statement.textContent = "正在載入題目...";
-  setResult("尚未送出", "送出程式碼後，結果會顯示在這裡。");
+  statement.textContent = "Loading problem...";
+  setResult("Not submitted", "Submit code to see the result.");
 
   try {
-    const response = await fetch("./" + problem.path + "/statement.html");
-    if (!response.ok) throw new Error("題目內容讀取失敗。");
+    const response = await fetch("./" + problem.path + "/statement.html", { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load the problem.");
     const html = await response.text();
     if (activeProblem === problem) statement.innerHTML = html;
   } catch (error) {
-    if (activeProblem === problem) statement.textContent = "題目內容載入失敗，請重新整理。";
+    if (activeProblem === problem) statement.textContent = "Could not load the problem. Please refresh the page.";
   }
 }
 
 async function loadProblems() {
   try {
-    const response = await fetch("./problems.json");
-    if (!response.ok) throw new Error("題目總目錄讀取失敗。");
+    const response = await fetch("./problems.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load problems.");
     const problems = await response.json();
-    if (!problems.length) throw new Error("尚無題目。");
+    if (!problems.length) throw new Error("No problems are available.");
     const requestedId = new URLSearchParams(location.search).get("id");
     const index = requestedId === null ? 0 : problems.findIndex((item) => item.id === requestedId);
-    if (index < 0) throw new Error("找不到指定的題目。請返回總目錄。");
+    if (index < 0) throw new Error("Problem not found. Return to the problem list.");
     await selectProblem(problems[index], index + 1, problems.length);
     runButton.disabled = false;
   } catch (error) {
-    title.textContent = "題目載入失敗";
+    title.textContent = "Could not load problem";
     statement.textContent = String(error);
   }
 }
@@ -114,7 +114,7 @@ loadProblems();
 runButton.addEventListener("click", () => {
   if (worker) return;
   if (!code.value.trim()) {
-    setResult("尚未送出", "請先貼上完整的 C++ 程式。", "", "fail");
+    setResult("Not submitted", "Enter your C++ code first.", "", "fail");
     code.focus();
     return;
   }
@@ -123,40 +123,40 @@ runButton.addEventListener("click", () => {
   startedAt = Date.now();
   progressElapsed.textContent = "00:00";
   progress.classList.add("running");
-  setProgress(0, 0, "準備判題", "正在啟動判題程式");
+  setProgress(0, 0, "Preparing", "Starting judge");
   clock = setInterval(updateElapsed, 1000);
-  setResult("處理中", "正在準備遠端判題。", "", "pending");
+  setResult("Pending", "Preparing your submission.", "", "pending");
   runButton.disabled = true;
   stopButton.hidden = false;
   progress.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
   worker = new Worker("./judge-worker.js", { type: "module" });
-  timeout = setTimeout(() => fail("ERROR", "遠端服務等待超過 60 秒，請重試。"), 60000);
+  timeout = setTimeout(() => fail("ERROR", "The judge took over 60 seconds. Please retry."), 60000);
 
   worker.onmessage = ({ data }) => {
     if (!worker) return;
     if (data.type === "ready") {
-      setProgress(0, 0, "連線中", "正在準備測資");
+      setProgress(0, 0, "Connecting", "Loading test cases");
       worker.postMessage({ problem: activeProblem.id, code: submittedCode });
     } else if (data.type === "batch") {
-      setProgress(0, data.total, "遠端判題中", "正在編譯一次並執行全部測資");
-      setResult("判題中", "正在等待 Judge0 回傳結果。", "", "pending");
+      setProgress(0, data.total, "Judging", "Compiling and running test cases");
+      setResult("Judging", "Waiting for Judge0.", "", "pending");
     } else if (data.type === "case") {
-      setProgress(data.index - 1, data.total, "正在核對測資 " + data.index + " / " + data.total, "遠端執行已完成");
+      setProgress(data.index - 1, data.total, "Checking case " + data.index + " / " + data.total, "Run complete");
     } else if (data.type === "case-done") {
-      setProgress(data.index, data.total, "已通過 " + data.index + " / " + data.total, "正在核對輸出");
+      setProgress(data.index, data.total, "Passed " + data.index + " / " + data.total, "Checking output");
     } else if (data.type === "result") {
-      if (data.verdict === "AC") setProgress(totalCases, totalCases, "判題完成", "全部測資通過");
+      if (data.verdict === "AC") setProgress(totalCases, totalCases, "Complete", "All test cases passed");
       stopWorker();
-      finishProgress(data.verdict === "AC" ? "判題完成" : "判題結束", data.message);
+      finishProgress(data.verdict === "AC" ? "Complete" : "Finished", data.message);
       setResult(data.verdict, data.message, data.detail || "", data.verdict === "AC" ? "ac" : "fail");
     }
   };
-  worker.onerror = () => fail("ERROR", "判題程式載入失敗。請確認網路連線後重試。");
+  worker.onerror = () => fail("ERROR", "Could not start the judge. Check your connection and retry.");
 });
 
 stopButton.addEventListener("click", () => {
   stopWorker();
-  finishProgress("已停止", "你已停止這次判題");
-  setResult("已停止", "判題已由你停止。");
+  finishProgress("Stopped", "Submission stopped");
+  setResult("Stopped", "You stopped this submission.");
 });

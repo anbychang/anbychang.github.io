@@ -1,34 +1,16 @@
 # Anby's Judge
 
-網站：[https://anbychang.github.io/](https://anbychang.github.io/)
+Website: [anbychang.github.io](https://anbychang.github.io/)
 
-公開的 C++20 練習判題網站。選題、貼上程式、送出即可使用；不需要帳號。程式由 Judge0 編譯一次，再逐筆執行測資。程式碼與提交紀錄不會保存。
+A small C++20 practice judge. Open a problem, paste a complete program, and submit it. The site does not save code or submissions.
 
-## 檔案規則
+## Add a problem
 
-- `docs/` 是完整網站，也是 GitHub Pages 的發布來源。
-- `docs/problems.json` 是唯一的題目總表。陣列順序就是顯示題號，題號從 `01` 開始，超過 99 題仍會顯示完整數字。題目 `id` 應固定且唯一。
-- 每題一個 `docs/problems/<slug>/` 資料夾，內含 `statement.html` 與從 `01.in`、`01.out` 開始連續編號的 UTF-8 測資。
-- 總目錄的 `03` 至 `22` 是 20 個排版預留位置，沒有題目檔案，也不能點擊。新增真題會依序取代預留位置；題數沒有 22 題上限。搜尋與分頁只顯示當前頁的卡片。
-- 一般題目使用 `"checker": "exact"`，會按空白切分後比對輸出；多解題須在 `docs/judge-worker.js` 加入專用驗證規則。
+1. Add `docs/problems/<slug>/statement.html` and numbered input/output files such as `01.in` and `01.out`.
+2. Add one entry to `docs/problems.json` with a stable `id`, English `title` and `category`, `path`, `cases`, and `checker`.
+3. Preview with `python -m http.server 8000 --directory docs` and test the submission.
+4. Push to `main`. GitHub Pages publishes `main/docs` automatically.
 
-## 新增題目
+See [RULES.md](RULES.md) for the rules for each page and file type.
 
-1. 建立 `docs/problems/<slug>/statement.html` 與 `01.in`、`01.out` 等測資。
-2. 在 `docs/problems.json` 最後加入一筆：
-
-```json
-{
-  "id": "my_problem",
-  "title": "我的新題目",
-  "category": "動態規劃",
-  "path": "problems/my-problem",
-  "cases": 1,
-  "checker": "exact"
-}
-```
-
-3. 在專案根目錄執行 `python -m http.server 8000 --directory docs`，開啟 `http://localhost:8000/` 檢查題目與判題。直接開啟 HTML 檔無法載入測資。
-4. 將變更推送到 `main`。GitHub Pages 直接從 `main/docs` 自動發布，不需另外同步網站。
-
-測資是公開網站檔案，因此這個網站適合個人練習，不適合需要保密測資的正式競賽。
+This is a practice site. Test case files are public and are not suitable for a contest that needs hidden tests.
