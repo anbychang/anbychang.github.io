@@ -1,0 +1,19 @@
+# Local dependencies and editor state
+node_modules/
+.vscode/
+.idea/
+
+# Local builds and logs
+*.exe
+*.o
+*.obj
+*.log
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
