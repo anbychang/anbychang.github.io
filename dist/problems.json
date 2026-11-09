@@ -1,0 +1,18 @@
+[
+  {
+    "id": "lacs",
+    "title": "最長共同近似子序列",
+    "category": "動態規劃 · 20 分",
+    "path": "problems/lacs",
+    "cases": 8,
+    "checker": "exact"
+  },
+  {
+    "id": "two_sum",
+    "title": "Two Sum",
+    "category": "陣列 · 入門",
+    "path": "problems/two-sum",
+    "cases": 7,
+    "checker": "two_sum"
+  }
+]

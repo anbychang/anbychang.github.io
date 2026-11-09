@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f5f9">
+  <title>Anby's Judge</title>
+  <meta name="description" content="C++ 練習題線上判題。">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><span class="brand-mark">AJ</span><span>Anby's Judge</span></div>
+    <span class="header-note">C++20 · 線上判題</span>
+  </header>
+
+  <main>
+    <div class="intro">
+      <div>
+        <p class="eyebrow">PERSONAL ONLINE JUDGE</p>
+        <h1>線上判題</h1>
+      </div>
+      <p>選題、貼上 C++ 程式、送出。無需帳號或安裝編譯器。</p>
+    </div>
+
+    <div class="workspace">
+      <aside class="sidebar" aria-label="題目列表">
+        <a class="directory-link" href="./index.html">題目總目錄</a>
+        <p class="section-label">題目列表 <span id="problem-count"></span></p>
+        <div id="problem-list"></div>
+      </aside>
+
+      <div class="main-column">
+        <section class="panel statement-panel" aria-labelledby="problem-title">
+          <div class="panel-heading"><div><p class="section-label">PROBLEM</p><h2 id="problem-title">載入題目中</h2></div><span id="problem-badge" class="badge"></span></div>
+          <div id="statement" class="statement"></div>
+        </section>
+
+        <section class="panel editor-panel" aria-labelledby="editor-title">
+          <div class="panel-heading"><div><p class="section-label">SUBMISSION</p><h2 id="editor-title">C++20 程式碼</h2></div><span class="language-tag">main.cpp</span></div>
+          <label for="source-code" class="sr-only">C++ 程式碼</label>
+          <textarea id="source-code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    
+}</textarea>
+          <div class="editor-actions">
+            <p>程式碼與測資會送至 Judge0。每次送出只編譯一次，再依序執行測資。</p>
+            <div class="button-row"><button id="stop-button" type="button" class="button-secondary" hidden>停止</button><button id="run-button" type="button" class="button-primary">送出判題</button></div>
+          </div>
+          <div id="run-progress" class="run-progress" aria-label="判題進度" hidden>
+            <div class="progress-head"><strong id="progress-label">準備判題</strong><span id="progress-count">0 / 0</span></div>
+            <div id="progress-track" class="progress-track" role="progressbar" aria-label="已完成測資" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><div id="progress-fill" class="progress-fill"></div></div>
+            <div class="progress-foot"><span id="progress-stage">正在啟動判題程式</span><span id="progress-elapsed">00:00</span></div>
+          </div>
+        </section>
+
+        <section class="panel result-panel" aria-labelledby="result-title">
+          <div class="panel-heading"><div><p class="section-label">RESULT</p><h2 id="result-title">判題結果</h2></div><span id="verdict" class="verdict neutral">尚未送出</span></div>
+          <p id="status" class="status" role="status" aria-live="polite">選擇題目並送出程式碼後，結果會顯示在這裡。</p>
+          <pre id="detail" class="detail" hidden></pre>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>練習用判題器 · 程式碼不會在本站保存，重新整理後不會保留。</footer>
+</body>
+</html>
+
