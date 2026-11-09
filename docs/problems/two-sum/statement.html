@@ -1,5 +1,27 @@
-<p>Given an array of integers and a target value, find two different positions whose values add up to the target.</p>
-<h3>Input</h3><p>The first line contains <code>n target</code>. The second line contains <code>n</code> integers. At least one valid pair exists. <code>2 &le; n &le; 2000</code>, and each value is between -10<sup>9</sup> and 10<sup>9</sup>.</p>
-<h3>Output</h3><p>Print any valid pair of <strong>1-based</strong> indices <code>i j</code> with <code>i &lt; j</code>.</p>
-<div class="sample-grid"><div><span>Sample Input</span><pre>4 9
-2 7 11 15</pre></div><div><span>Sample Output</span><pre>1 2</pre></div></div>
+<p class="statement-meta">Time Limit: 3 sec per test case</p>
+<h3>Problem Statement</h3>
+<p>You are given an array <code>a</code> of <code>n</code> integers and an integer <code>target</code>. Find two different indices <code>i</code> and <code>j</code> such that <code>a[i] + a[j] = target</code>.</p>
+<p>At least one valid pair exists. If several pairs are valid, you may print any one of them.</p>
+
+<h3>Constraints</h3>
+<ul>
+  <li><code>2 &le; n &le; 2000</code></li>
+  <li><code>-10<sup>9</sup> &le; a[i] &le; 10<sup>9</sup></code></li>
+  <li>All input values are integers.</li>
+</ul>
+
+<h3>Input</h3>
+<p>The input is given in the following format:</p>
+<pre class="input-format">n target
+a[1] a[2] ... a[n]</pre>
+
+<h3>Output</h3>
+<p>Print two 1-based indices <code>i j</code> such that <code>1 &le; i &lt; j &le; n</code> and <code>a[i] + a[j] = target</code>.</p>
+
+<hr>
+<div class="sample-heading"><h3>Sample Input 1</h3><button class="copy-sample" type="button" aria-label="Copy sample input 1">Copy</button></div>
+<pre>4 9
+2 7 11 15</pre>
+<div class="sample-heading"><h3>Sample Output 1</h3><button class="copy-sample" type="button" aria-label="Copy sample output 1">Copy</button></div>
+<pre>1 2</pre>
+<p>The values at positions 1 and 2 are 2 and 7. Their sum is 9.</p>

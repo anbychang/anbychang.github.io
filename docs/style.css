@@ -82,21 +82,27 @@ h2 { margin: 0; font-size: 18px; font-weight: 690; line-height: 1.35; letter-spa
   font-size: 10px;
   font-weight: 650;
 }
-.statement { color: #4a5260; font-size: 13px; line-height: 1.8; }
-.statement p { margin: 0 0 13px; }
-.statement h3 { margin: 21px 0 6px; color: #2d3440; font-size: 11px; font-weight: 720; }
+.statement { color: #4a5260; font-size: 13px; line-height: 1.75; }
+.statement p { margin: 0 0 14px; }
+.statement h3 { margin: 29px 0 10px; color: #2d3440; font-size: 14px; font-weight: 700; }
+.statement h3:first-child { margin-top: 0; }
+.statement .statement-meta { padding-bottom: 12px; border-bottom: 1px solid #e8eaee; color: #737c89; font-size: 11px; line-height: 1.8; }
+.statement ul { margin: 0 0 14px; padding-left: 22px; }
+.statement li { margin: 5px 0; }
+.statement hr { border: 0; border-top: 1px solid #e8eaee; margin: 27px 0 22px; }
+.sample-heading { display: flex; align-items: center; gap: 8px; margin: 23px 0 8px; }
+.sample-heading h3 { margin: 0; }
+.copy-sample { padding: 3px 7px; border: 1px solid #d9dde4; border-radius: 4px; background: #fff; color: #657080; font-size: 10px; }
+.copy-sample:hover { background: #f3f5f8; }
 code { padding: 2px 4px; border-radius: 3px; background: #f2f3f5; color: #3d4758; font-family: "Cascadia Code", Consolas, monospace; }
-.sample-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 25px; }
-.sample-grid > div { min-width: 0; }
-.sample-grid span { color: #8c929c; font-size: 10px; font-weight: 700; }
 pre { font-family: "Cascadia Code", Consolas, monospace; }
-.sample-grid pre {
+.statement pre {
   overflow: auto;
-  margin: 7px 0 0;
+  margin: 0 0 15px;
   padding: 13px;
-  border: 1px solid #ebedf0;
-  border-radius: 7px;
-  background: #f8f9fa;
+  border: 1px solid #d9dde4;
+  border-radius: 2px;
+  background: #f4f5f7;
   color: #313946;
   font-size: 12px;
   line-height: 1.6;
@@ -175,7 +181,6 @@ footer { padding: 20px 18px 32px; color: #9aa1ab; text-align: center; font-size:
   .panel { padding: 20px 16px; }
   .panel-heading { margin-bottom: 17px; }
   h2 { font-size: 16px; }
-  .sample-grid { grid-template-columns: 1fr; }
   .editor-actions { align-items: stretch; flex-direction: column; }
   .button-row { justify-content: flex-end; }
   #source-code { height: 285px; }

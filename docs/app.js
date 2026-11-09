@@ -27,6 +27,18 @@ code.value = template;
 const formatNumber = (number) => String(number).padStart(2, "0");
 runButton.disabled = true;
 
+statement.addEventListener("click", async (event) => {
+  const button = event.target.closest(".copy-sample");
+  if (!button) return;
+  try {
+    await navigator.clipboard.writeText(button.parentElement.nextElementSibling.textContent);
+    button.textContent = "Copied";
+  } catch (error) {
+    button.textContent = "Copy failed";
+  }
+  setTimeout(() => { button.textContent = "Copy"; }, 1500);
+});
+
 function setResult(label, message, extra = "", kind = "neutral") {
   verdict.textContent = label;
   verdict.className = "verdict " + kind;
