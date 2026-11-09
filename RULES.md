@@ -68,5 +68,6 @@ This repository file is the project specification. Update the relevant section w
 
 - README explains use and how to add a problem; this file holds the detailed rules. `.gitignore` excludes local artifacts while allowing `.in` and `.out` tests.
 - `docs/` is the complete site. GitHub Pages publishes `main/docs`; keep `docs/.nojekyll`.
+- When `style.css` changes, update the stylesheet URL version in both HTML pages so browsers load the new layout.
 - Check JavaScript syntax, the list, and a problem in a browser. Test a real submission when judging code or submission flow changes.
 - Commit and push site changes with matching problem files. Verify the public URL before reporting completion.
