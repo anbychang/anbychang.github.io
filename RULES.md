@@ -17,13 +17,13 @@ This repository file is the project specification. Update the relevant section w
 ## `docs/catalog.js`: list behavior
 
 - Read real problems from `problems.json`. Each row links to `problem.html?id=<id>`.
-- Search number, title, and topic without renumbering filtered results.
+- Search the displayed number (including its leading zero), title, and topic without renumbering filtered results. Announce the result count to assistive technology without adding visible clutter.
 - Render only the current page, with 24 rows per page, so thousands of problems remain usable.
 - Show one short English message for an empty search or a load failure.
 
 ## `docs/problem.html`: problem-page structure
 
-- Use one vertical column in this order: statement, C++20 editor with progress, then result. Center the column on wide screens. The brand is the return path to the list.
+- Use one vertical column in this order: statement, C++20 editor with progress, then result. The problem title is the page h1; statement sections and the editor/result titles are h2. Center the column on wide screens. The brand is the return path to the list.
 - Keep the complete-program, standard-input, standard-output model. Do not add a separate Run action until its behavior is specified.
 
 ## `docs/app.js`: problem-page behavior
@@ -63,12 +63,12 @@ This repository file is the project specification. Update the relevant section w
 - Use one restrained light visual system. The problem list follows the compact structure of a coding problem list without copying another site's brand or artwork.
 - Keep the problem page in one column at every screen width; do not place the editor beside the statement.
 - Give statement section headings clear hierarchy. Show constraints as a list, put a divider before samples, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
-- Keep keyboard focus visible and layouts readable on narrow screens. Remove styles when their elements are removed.
+- Keep keyboard focus visible, secondary text readable against its background, and long titles wrapping on narrow screens. Remove styles when their elements are removed.
 
 ## `README.md`, `.gitignore`, and publishing
 
 - README explains use and how to add a problem; this file holds the detailed rules. `.gitignore` excludes local artifacts while allowing `.in` and `.out` tests.
 - `docs/` is the complete site. GitHub Pages publishes `main/docs`; keep `docs/.nojekyll`.
-- When `style.css` changes, update the stylesheet URL version in both HTML pages so browsers load the new layout.
+- When a CSS or JavaScript file changes, update its URL version in the HTML page that loads it so browsers receive the new behavior.
 - Check JavaScript syntax, the list, and a problem in a browser. Test a real submission when judging code or submission flow changes.
 - Commit and push site changes with matching problem files. Verify the public URL before reporting completion.

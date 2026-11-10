@@ -1,5 +1,6 @@
 const list = document.getElementById("problem-list");
 const search = document.getElementById("problem-search");
+const searchStatus = document.getElementById("search-status");
 const previous = document.getElementById("previous-page");
 const next = document.getElementById("next-page");
 const pageStatus = document.getElementById("page-status");
@@ -31,7 +32,7 @@ function makeRow(problem, number) {
 function render() {
   const query = search.value.trim().toLowerCase();
   const matches = problems.map((problem, index) => ({ problem, number: index + 1 }))
-    .filter(({ problem, number }) => !query || (number + " " + problem.title + " " + problem.category)
+    .filter(({ problem, number }) => !query || (number + " " + String(number).padStart(2, "0") + " " + problem.title + " " + problem.category)
       .toLowerCase().includes(query));
   const totalPages = Math.max(1, Math.ceil(matches.length / pageSize));
   page = Math.min(page, totalPages - 1);
@@ -43,6 +44,7 @@ function render() {
     empty.textContent = "No problems found.";
     list.append(empty);
   }
+  searchStatus.textContent = matches.length + (matches.length === 1 ? " problem found." : " problems found.");
   pagination.hidden = totalPages === 1;
   pageStatus.textContent = (page + 1) + " / " + totalPages;
   previous.disabled = page === 0;
@@ -63,4 +65,5 @@ try {
   message.className = "empty-list";
   message.textContent = "Could not load problems. Please refresh the page.";
   list.replaceChildren(message);
+  searchStatus.textContent = message.textContent;
 }

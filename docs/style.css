@@ -35,22 +35,22 @@ button { cursor: pointer; }
 }
 main { min-height: calc(100vh - 45px); }
 .workspace { display: block; }
-.section-label { margin: 0; color: #8b929e; font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+.section-label { margin: 0; color: #596575; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
 .brand:focus-visible, .problem-row:focus-visible, .catalog-search:focus-visible { outline: 2px solid #61789e; outline-offset: 2px; }
 .catalog-page { background: #f8f9fb; }
 .catalog-page .catalog-main { max-width: 1040px; min-height: calc(100vh - 68px); margin: 0 auto; padding: 42px 30px; }
 .catalog-main h1 { margin: 0 0 24px; font-size: 28px; letter-spacing: -.04em; }
-.catalog-search { display: block; width: min(360px, 100%); margin-bottom: 20px; padding: 10px 13px; border: 1px solid #dfe3ea; border-radius: 8px; background: #fff; color: #202124; font-size: 13px; }
+.catalog-search { display: block; width: min(360px, 100%); margin-bottom: 20px; padding: 10px 13px; border: 1px solid #dfe3ea; border-radius: 8px; background: #fff; color: #202124; font-size: 14px; }
 .list-heading, .problem-row { display: grid; grid-template-columns: 56px minmax(0, 1fr) 190px; align-items: center; gap: 12px; }
-.list-heading { padding: 10px 18px; color: #8791a0; font-size: 11px; font-weight: 700; }
+.list-heading { padding: 10px 18px; color: #5d6878; font-size: 12px; font-weight: 700; }
 .catalog-list { margin: 0; padding: 0; border: 1px solid #e6e8ec; border-radius: 10px; overflow: hidden; background: #fff; list-style: none; }
 .catalog-list li + li { border-top: 1px solid #eef0f3; }
-.problem-row { min-height: 56px; padding: 12px 18px; color: #202124; text-decoration: none; font-size: 13px; }
+.problem-row { min-height: 56px; padding: 12px 18px; color: #202124; text-decoration: none; font-size: 14px; }
 .problem-row:hover { background: #f3f6fa; }
-.problem-index { color: #8e9bb0; font: 650 12px "Cascadia Code", Consolas, monospace; }
-.problem-row strong { font-weight: 650; }
-.problem-topic { color: #8791a0; font-size: 12px; }
-.empty-list { padding: 20px 18px; color: #8791a0; font-size: 13px; }
+.problem-index { color: #576579; font: 650 13px "Cascadia Code", Consolas, monospace; }
+.problem-row strong { font-weight: 650; overflow-wrap: anywhere; }
+.problem-topic { color: #5d6878; font-size: 13px; }
+.empty-list { padding: 20px 18px; color: #5d6878; font-size: 14px; }
 .pagination { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 25px; color: #788394; font-size: 12px; }
 .pagination button { padding: 8px 12px; border: 1px solid #dfe3ea; border-radius: 7px; background: #fff; color: #344051; }
 .pagination button:disabled { opacity: .45; cursor: default; }
@@ -69,22 +69,22 @@ main { min-height: calc(100vh - 45px); }
 .panel { min-width: 0; padding: 26px 28px; background: #fff; }
 .panel-heading { display: flex; align-items: start; justify-content: space-between; gap: 14px; margin-bottom: 23px; }
 .panel-heading .section-label { margin-bottom: 8px; }
-h2 { margin: 0; font-size: 18px; font-weight: 690; line-height: 1.35; letter-spacing: -.025em; }
+.panel-heading h1, .panel-heading h2 { margin: 0; font-size: 18px; font-weight: 690; line-height: 1.35; letter-spacing: -.025em; }
 .badge, .language-tag {
   flex: none;
   padding: 5px 8px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   background: #fafbfc;
-  color: #777f8b;
-  font-size: 10px;
+  color: #596575;
+  font-size: 11px;
   font-weight: 650;
 }
-.statement { color: #4a5260; font-size: 13px; line-height: 1.75; }
+.statement { color: #4a5260; font-size: 14px; line-height: 1.75; }
 .statement p { margin: 0 0 14px; }
-.statement h3 { margin: 29px 0 10px; color: #2d3440; font-size: 14px; font-weight: 700; }
-.statement h3:first-child { margin-top: 0; }
-.statement .statement-meta { padding-bottom: 12px; border-bottom: 1px solid #e8eaee; color: #737c89; font-size: 11px; line-height: 1.8; }
+.statement h2 { margin: 29px 0 10px; color: #2d3440; font-size: 15px; font-weight: 700; }
+.statement h2:first-child { margin-top: 0; }
+.statement .statement-meta { padding-bottom: 12px; border-bottom: 1px solid #e8eaee; color: #596575; font-size: 12px; line-height: 1.8; }
 .statement ul { margin: 0 0 14px; padding-left: 22px; }
 .statement li { margin: 5px 0; }
 .statement hr { border: 0; border-top: 1px solid #e8eaee; margin: 27px 0 22px; }
@@ -98,7 +98,7 @@ pre { font-family: "Cascadia Code", Consolas, monospace; }
   border-radius: 2px;
   background: #f4f5f7;
   color: #313946;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
 }
 #source-code {
@@ -112,13 +112,13 @@ pre { font-family: "Cascadia Code", Consolas, monospace; }
   background: #fafbfc;
   color: #242b36;
   font-family: "Cascadia Code", Consolas, monospace;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.58;
   tab-size: 4;
 }
 #source-code:focus { border-color: #9aa7bc; box-shadow: 0 0 0 3px #8195b526; }
 .editor-actions { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 15px; }
-.editor-actions p { max-width: 355px; margin: 0; color: #9198a3; font-size: 11px; line-height: 1.5; }
+.editor-actions p { max-width: 355px; margin: 0; color: #5d6878; font-size: 12px; line-height: 1.5; }
 .button-row { display: flex; flex: none; gap: 8px; }
 button:focus-visible { outline: 2px solid #61789e; outline-offset: 2px; }
 .button-primary, .button-secondary { border: 0; border-radius: 8px; padding: 10px 15px; font-size: 12px; font-weight: 700; }
@@ -128,7 +128,7 @@ button:focus-visible { outline: 2px solid #61789e; outline-offset: 2px; }
 .button-secondary { background: #f0f1f3; color: #47505e; }
 .run-progress { margin-top: 16px; padding: 15px 16px; border: 1px solid #e5e8ee; border-radius: 9px; background: #f8f9fb; }
 .progress-head, .progress-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.progress-head { color: #37404e; font-size: 12px; }
+.progress-head { color: #37404e; font-size: 13px; }
 .progress-head strong { font-weight: 700; }
 .progress-head span, .progress-foot span:last-child { font-family: "Cascadia Code", Consolas, monospace; font-variant-numeric: tabular-nums; }
 .progress-track { position: relative; height: 6px; overflow: hidden; margin: 12px 0 10px; border-radius: 9px; background: #e4e8ef; }
@@ -144,15 +144,15 @@ button:focus-visible { outline: 2px solid #61789e; outline-offset: 2px; }
   animation: progress-sweep 1.5s linear infinite;
 }
 @keyframes progress-sweep { to { left: 100%; } }
-.progress-foot { color: #8a929e; font-size: 11px; }
-.verdict { flex: none; padding: 5px 9px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: .02em; }
+.progress-foot { color: #5d6878; font-size: 12px; }
+.verdict { flex: none; padding: 5px 9px; border-radius: 6px; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
 .verdict.neutral { background: #f1f2f4; color: #7b838e; }
 .verdict.ac { background: #e8f5eb; color: #32724a; }
 .verdict.fail { background: #fbece9; color: #a34e44; }
 .verdict.pending { background: #eef2f8; color: #586a89; }
-.status { margin: 0; color: #6e7784; font-size: 13px; line-height: 1.6; }
+.status { margin: 0; color: #596575; font-size: 14px; line-height: 1.6; }
 .detail { margin: 14px 0 0; padding: 13px; overflow: auto; white-space: pre-wrap; word-break: break-word; border: 1px solid #eceef1; border-radius: 8px; background: #fafbfc; color: #3d4652; font-size: 12px; line-height: 1.5; }
-footer { padding: 20px 18px 32px; color: #9aa1ab; text-align: center; font-size: 11px; }
+footer { padding: 20px 18px 32px; color: #596575; text-align: center; font-size: 12px; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 [hidden] { display: none !important; }
 @media (max-width: 1020px) {
@@ -169,7 +169,7 @@ footer { padding: 20px 18px 32px; color: #9aa1ab; text-align: center; font-size:
   .list-heading span:last-child, .problem-topic { display: none; }
   .panel { padding: 20px 16px; }
   .panel-heading { margin-bottom: 17px; }
-  h2 { font-size: 16px; }
+  .panel-heading h1, .panel-heading h2 { font-size: 16px; }
   .editor-actions { align-items: stretch; flex-direction: column; }
   .button-row { justify-content: flex-end; }
   #source-code { height: 285px; }
