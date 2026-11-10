@@ -51,7 +51,7 @@ main { min-height: calc(100vh - 45px); }
 .problem-row strong { font-weight: 650; overflow-wrap: anywhere; }
 .problem-topic { color: #5d6878; font-size: 13px; }
 .empty-list { padding: 20px 18px; color: #5d6878; font-size: 14px; }
-.pagination { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 25px; color: #788394; font-size: 12px; }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 25px; color: #5d6878; font-size: 12px; }
 .pagination button { padding: 8px 12px; border: 1px solid #dfe3ea; border-radius: 7px; background: #fff; color: #344051; }
 .pagination button:disabled { opacity: .45; cursor: default; }
 .main-column {
@@ -117,6 +117,7 @@ pre { font-family: "Cascadia Code", Consolas, monospace; }
   tab-size: 4;
 }
 #source-code:focus { border-color: #9aa7bc; box-shadow: 0 0 0 3px #8195b526; }
+#source-code:focus-visible { outline: 2px solid #61789e; outline-offset: 2px; }
 .editor-actions { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 15px; }
 .editor-actions p { max-width: 355px; margin: 0; color: #5d6878; font-size: 12px; line-height: 1.5; }
 .button-row { display: flex; flex: none; gap: 8px; }
@@ -146,7 +147,7 @@ button:focus-visible { outline: 2px solid #61789e; outline-offset: 2px; }
 @keyframes progress-sweep { to { left: 100%; } }
 .progress-foot { color: #5d6878; font-size: 12px; }
 .verdict { flex: none; padding: 5px 9px; border-radius: 6px; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
-.verdict.neutral { background: #f1f2f4; color: #7b838e; }
+.verdict.neutral { background: #f1f2f4; color: #4d5968; }
 .verdict.ac { background: #e8f5eb; color: #32724a; }
 .verdict.fail { background: #fbece9; color: #a34e44; }
 .verdict.pending { background: #eef2f8; color: #586a89; }

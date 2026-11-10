@@ -63,7 +63,7 @@ This repository file is the project specification. Update the relevant section w
 - Use one restrained light visual system. The problem list follows the compact structure of a coding problem list without copying another site's brand or artwork.
 - Keep the problem page in one column at every screen width; do not place the editor beside the statement.
 - Give statement section headings clear hierarchy. Show constraints as a list, put a divider before samples, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
-- Keep keyboard focus visible, secondary text readable against its background, and long titles wrapping on narrow screens. Remove styles when their elements are removed.
+- Keep keyboard focus visible on links, buttons, search, and the code editor. Maintain at least 4.5:1 contrast for normal text, including status labels and pagination. Wrap long titles on narrow screens. Remove styles when their elements are removed.
 
 ## `README.md`, `.gitignore`, and publishing
 
