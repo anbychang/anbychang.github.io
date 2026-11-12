@@ -1,7 +1,7 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
-<p>You are given two integer sequences <var>S<sub>1</sub> = (s<sub>1,1</sub>, ..., s<sub>1,L₁</sub>)</var> and <var>S<sub>2</sub> = (s<sub>2,1</sub>, ..., s<sub>2,L₂</sub>)</var>, of lengths <var>L<sub>1</sub></var> and <var>L<sub>2</sub></var>. A subsequence keeps the original order and may omit any elements.</p>
-<p>Choose a subsequence <var>S<sub>1</sub><sup>′</sup> = (s′<sub>1,1</sub>, ..., s′<sub>1,K</sub>)</var> of <var>S<sub>1</sub></var> and a subsequence <var>S<sub>2</sub><sup>′</sup> = (s′<sub>2,1</sub>, ..., s′<sub>2,K</sub>)</var> of <var>S<sub>2</sub></var>. Both must have length <var>K</var>. For every <var>i</var> from <var>1</var> to <var>K</var>, the corresponding elements must satisfy:</p>
+<p>You are given two integer sequences <var>S<sub>1</sub></var> and <var>S<sub>2</sub></var> of lengths <var>L<sub>1</sub></var> and <var>L<sub>2</sub></var>. Let <var>s<sub>1,i</sub></var> be the <var>i</var>-th element of <var>S<sub>1</sub></var>, and <var>s<sub>2,j</sub></var> the <var>j</var>-th element of <var>S<sub>2</sub></var>. A subsequence is formed by deleting zero or more elements while keeping the original order.</p>
+<p>Choose a subsequence <var>S<sub>1</sub><sup>′</sup></var> of <var>S<sub>1</sub></var> and a subsequence <var>S<sub>2</sub><sup>′</sup></var> of <var>S<sub>2</sub></var>, both of length <var>K</var>. Let <var>s′<sub>1,i</sub></var> and <var>s′<sub>2,i</sub></var> be their <var>i</var>-th elements. For every <var>1 &le; i &le; K</var>, require:</p>
 <p class="statement-formula"><var>|s′<sub>1,i</sub> − s′<sub>2,i</sub>| &le; 1</var></p>
 <p>First, maximize <var>K</var>. Among all choices with the maximum length, print the lexicographically largest <var>S<sub>1</sub><sup>′</sup></var>. Compare two sequences at their first different element; the one with the larger element is lexicographically larger.</p>
 

@@ -87,6 +87,7 @@ main { min-height: calc(100vh - 45px); }
   font-weight: 650;
 }
 .statement { max-width: 78ch; color: #343b46; font-size: 15px; line-height: 1.75; }
+.statement var { white-space: nowrap; }
 .statement p { margin: 0 0 14px; }
 .statement .statement-formula { margin: 2px 0 18px; text-align: center; font-size: 17px; }
 .statement h2 { margin: 31px 0 11px; color: #202733; font-size: 18px; font-weight: 700; line-height: 1.4; }
