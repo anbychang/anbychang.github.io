@@ -1,8 +1,8 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
 <p>You are given two integer sequences <var>S<sub>1</sub> = (s<sub>1,1</sub>, ..., s<sub>1,L₁</sub>)</var> and <var>S<sub>2</sub> = (s<sub>2,1</sub>, ..., s<sub>2,L₂</sub>)</var>, of lengths <var>L<sub>1</sub></var> and <var>L<sub>2</sub></var>. A subsequence keeps the original order and may omit any elements.</p>
-<p>Choose a subsequence <var>S<sub>1</sub><sup>′</sup> = (s<sup>′</sup><sub>1,1</sub>, ..., s<sup>′</sup><sub>1,K</sub>)</var> of <var>S<sub>1</sub></var> and a subsequence <var>S<sub>2</sub><sup>′</sup> = (s<sup>′</sup><sub>2,1</sub>, ..., s<sup>′</sup><sub>2,K</sub>)</var> of <var>S<sub>2</sub></var>. Both must have length <var>K</var>. For every <var>i</var> from <var>1</var> to <var>K</var>, the corresponding elements must satisfy:</p>
-<p class="statement-formula"><var>|s<sup>′</sup><sub>1,i</sub> − s<sup>′</sup><sub>2,i</sub>| &le; 1</var></p>
+<p>Choose a subsequence <var>S<sub>1</sub><sup>′</sup> = (s′<sub>1,1</sub>, ..., s′<sub>1,K</sub>)</var> of <var>S<sub>1</sub></var> and a subsequence <var>S<sub>2</sub><sup>′</sup> = (s′<sub>2,1</sub>, ..., s′<sub>2,K</sub>)</var> of <var>S<sub>2</sub></var>. Both must have length <var>K</var>. For every <var>i</var> from <var>1</var> to <var>K</var>, the corresponding elements must satisfy:</p>
+<p class="statement-formula"><var>|s′<sub>1,i</sub> − s′<sub>2,i</sub>| &le; 1</var></p>
 <p>First, maximize <var>K</var>. Among all choices with the maximum length, print the lexicographically largest <var>S<sub>1</sub><sup>′</sup></var>. Compare two sequences at their first different element; the one with the larger element is lexicographically larger.</p>
 
 <h2>Constraints</h2>
@@ -25,4 +25,5 @@
 3 5 4 5 7 3</pre>
 <h2>Sample Output 1</h2>
 <pre>2 5 7 4</pre>
-<p>The maximum length is <var>K = 4</var>. One valid pair is <var>S<sub>1</sub><sup>′</sup> = (2, 5, 7, 4)</var> and <var>S<sub>2</sub><sup>′</sup> = (3, 5, 7, 3)</var>. Another length-4 choice for <var>S<sub>1</sub><sup>′</sup></var> is <var>(2, 5, 4, 3)</var>. The first difference is the third element, where <var>7 &gt; 4</var>, so the sample output is lexicographically larger.</p>
+<p>The maximum length is <var>K = 4</var>. One valid pair is <var>S<sub>1</sub><sup>′</sup> = (2, 5, 7, 4)</var> and <var>S<sub>2</sub><sup>′</sup> = (3, 5, 7, 3)</var>.</p>
+<p>Another length-4 choice for <var>S<sub>1</sub><sup>′</sup></var> is <var>(2, 5, 4, 3)</var>. The first difference is the third element, where <var>7 &gt; 4</var>, so the sample output is lexicographically larger.</p>
