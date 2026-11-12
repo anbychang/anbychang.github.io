@@ -3,7 +3,6 @@ const template = "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {
 const statement = document.getElementById("statement");
 const code = document.getElementById("source-code");
 const title = document.getElementById("problem-title");
-const badge = document.getElementById("problem-badge");
 const verdict = document.getElementById("verdict");
 const status = document.getElementById("status");
 const detail = document.getElementById("detail");
@@ -73,11 +72,10 @@ function fail(label, message, extra = "") {
   setResult(label, message, extra, "fail");
 }
 
-async function selectProblem(problem, number, total) {
+async function selectProblem(problem, number) {
   activeProblem = problem;
-  title.textContent = problem.title;
+  title.textContent = formatNumber(number) + ". " + problem.title;
   document.title = problem.title + " · Anby's Judge";
-  badge.textContent = formatNumber(number) + " / " + formatNumber(total);
   progress.hidden = true;
   statement.textContent = "Loading problem...";
   setResult("Not submitted", "Submit code to see the result.");
@@ -101,7 +99,7 @@ async function loadProblems() {
     const requestedId = new URLSearchParams(location.search).get("id");
     const index = requestedId === null ? 0 : problems.findIndex((item) => item.id === requestedId);
     if (index < 0) throw new Error("Problem not found. Return to the problem list.");
-    await selectProblem(problems[index], index + 1, problems.length);
+    await selectProblem(problems[index], index + 1);
     runButton.disabled = false;
   } catch (error) {
     title.textContent = "Could not load problem";

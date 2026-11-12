@@ -6,24 +6,25 @@
   <meta name="theme-color" content="#f3f5f9">
   <title>Anby's Judge</title>
   <meta name="description" content="C++20 practice problems and online judging.">
-  <link rel="stylesheet" href="./style.css?v=readability-3">
-  <script type="module" src="./app.js"></script>
+  <link rel="stylesheet" href="./style.css?v=layout-4">
+  <script type="module" src="./app.js?v=layout-4"></script>
 </head>
 <body class="problem-page">
   <header class="site-header">
     <a class="brand" href="./index.html" aria-label="Back to problems"><span class="brand-mark">AJ</span><span>Anby's Judge</span></a>
+    <a class="header-action" href="#editor-title">Code</a>
   </header>
 
   <main>
     <div class="workspace">
       <div class="main-column">
         <section class="panel statement-panel" aria-labelledby="problem-title">
-          <div class="panel-heading"><div><p class="section-label">PROBLEM</p><h1 id="problem-title">Loading...</h1></div><span id="problem-badge" class="badge"></span></div>
+          <div class="panel-heading"><h1 id="problem-title">Loading...</h1></div>
           <div id="statement" class="statement"></div>
         </section>
 
         <section class="panel editor-panel" aria-labelledby="editor-title">
-          <div class="panel-heading"><div><p class="section-label">SUBMISSION</p><h2 id="editor-title">C++20 Code</h2></div><span class="language-tag">main.cpp</span></div>
+          <div class="panel-heading"><h2 id="editor-title">Code</h2><span class="language-tag">C++20</span></div>
           <label for="source-code" class="sr-only">C++ code</label>
           <textarea id="source-code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">#include &lt;bits/stdc++.h&gt;
 using namespace std;
@@ -32,7 +33,6 @@ int main() {
     
 }</textarea>
           <div class="editor-actions">
-            <p>Code and test cases are sent to Judge0. Each submission is compiled once.</p>
             <div class="button-row"><button id="stop-button" type="button" class="button-secondary" hidden>Stop</button><button id="run-button" type="button" class="button-primary">Submit</button></div>
           </div>
           <div id="run-progress" class="run-progress" aria-label="Judging progress" hidden>
@@ -43,7 +43,7 @@ int main() {
         </section>
 
         <section class="panel result-panel" aria-labelledby="result-title">
-          <div class="panel-heading"><div><p class="section-label">RESULT</p><h2 id="result-title">Result</h2></div><span id="verdict" class="verdict neutral">Not submitted</span></div>
+          <div class="panel-heading"><h2 id="result-title">Result</h2><span id="verdict" class="verdict neutral">Not submitted</span></div>
           <p id="status" class="status" role="status" aria-live="polite">Submit code to see the result.</p>
           <pre id="detail" class="detail" hidden></pre>
         </section>

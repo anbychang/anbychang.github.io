@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f3f5f9">
   <title>Problems · Anby's Judge</title>
   <meta name="description" content="C++20 practice problems on Anby's Judge.">
-  <link rel="stylesheet" href="./style.css?v=readability-3">
+  <link rel="stylesheet" href="./style.css?v=layout-4">
   <script type="module" src="./catalog.js?v=readability-2"></script>
 </head>
 <body class="catalog-page">
@@ -14,12 +14,16 @@
     <a class="brand" href="./index.html" aria-label="Anby's Judge home"><span class="brand-mark">AJ</span><span>Anby's Judge</span></a>
   </header>
   <main class="catalog-main">
-    <h1>Problems</h1>
-    <label class="sr-only" for="problem-search">Search problems</label>
-    <input id="problem-search" class="catalog-search" type="search" placeholder="Search problems" autocomplete="off">
+    <div class="catalog-toolbar">
+      <h1>Problems</h1>
+      <label class="sr-only" for="problem-search">Search problems</label>
+      <input id="problem-search" class="catalog-search" type="search" placeholder="Search problems" autocomplete="off">
+    </div>
     <p id="search-status" class="sr-only" role="status"></p>
-    <div class="list-heading"><span>#</span><span>Title</span><span>Topic</span></div>
-    <ol id="problem-list" class="catalog-list"><li class="empty-list">Loading...</li></ol>
+    <div class="list-table">
+      <div class="list-heading"><span>#</span><span>Title</span><span>Topic</span></div>
+      <ol id="problem-list" class="catalog-list"><li class="empty-list">Loading...</li></ol>
+    </div>
     <nav id="pagination" class="pagination" aria-label="Problem pages" hidden>
       <button id="previous-page" type="button">Previous</button>
       <span id="page-status"></span>
