@@ -70,6 +70,7 @@ main { min-height: calc(100vh - 45px); }
   overflow: hidden;
 }
 .statement-panel, .editor-panel { border-bottom: 1px solid #e8eaee; }
+.result-panel { scroll-margin-top: 84px; }
 .panel { min-width: 0; padding: 30px 36px; background: #fff; }
 .panel-heading { display: flex; align-items: start; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
 .panel-heading h1, .panel-heading h2 { margin: 0; font-weight: 690; line-height: 1.35; letter-spacing: -.025em; }

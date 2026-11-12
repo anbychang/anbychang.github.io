@@ -6,6 +6,7 @@ const title = document.getElementById("problem-title");
 const verdict = document.getElementById("verdict");
 const status = document.getElementById("status");
 const detail = document.getElementById("detail");
+const resultPanel = document.querySelector(".result-panel");
 const runButton = document.getElementById("run-button");
 const stopButton = document.getElementById("stop-button");
 const progress = document.getElementById("run-progress");
@@ -68,8 +69,9 @@ function stopWorker() {
 
 function fail(label, message, extra = "") {
   stopWorker();
-  finishProgress("Stopped", message);
+  finishProgress(label === "ERROR" ? "Error" : "Stopped", message);
   setResult(label, message, extra, "fail");
+  resultPanel.scrollIntoView({ block: "start" });
 }
 
 async function selectProblem(problem, number) {
@@ -148,6 +150,7 @@ runButton.addEventListener("click", () => {
       stopWorker();
       finishProgress(data.verdict === "AC" ? "Complete" : "Finished", data.message);
       setResult(data.verdict, data.message, data.detail || "", data.verdict === "AC" ? "ac" : "fail");
+      resultPanel.scrollIntoView({ block: "start" });
     }
   };
   worker.onerror = () => fail("ERROR", "Could not start the judge. Check your connection and retry.");
@@ -157,4 +160,5 @@ stopButton.addEventListener("click", () => {
   stopWorker();
   finishProgress("Stopped", "Submission stopped");
   setResult("Stopped", "You stopped this submission.");
+  resultPanel.scrollIntoView({ block: "start" });
 });

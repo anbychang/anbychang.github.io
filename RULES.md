@@ -32,6 +32,7 @@ This repository file is the project specification. Update the relevant section w
 
 - Load one problem by stable URL `id`. Submit runs the full judge; Stop cancels a running submission.
 - Show compilation or judging progress and completed case counts. Show AC, WA, CE, RE, TLE, or ERROR with a short English explanation. ERROR means judge or data failure.
+- When judging finishes, fails, or is stopped, scroll the Result panel into view below the sticky header so the verdict is immediately visible.
 - Do not change the editor layout or judging flow when doing list-only work.
 
 ## `docs/problems.json`: catalog data
