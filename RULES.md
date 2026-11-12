@@ -69,7 +69,7 @@ This repository file is the project specification. Update the relevant section w
 ## `docs/style.css`: visual rules
 
 - Use one restrained light visual system. The problem list follows the compact structure of a coding problem list without copying another site's brand or artwork.
-- Use LeetCode's system font stack for page text so Windows displays Segoe UI; keep monospace for code and input/output blocks. Do not load a font file just for this style.
+- Use AtCoder's Lato font for page text, loaded from Google Fonts, with `Helvetica Neue`, Arial, and sans-serif fallbacks. Set statement body text to 16px. Keep monospace for code and input/output blocks.
 - Keep the problem page in one column at every screen width; do not place the editor beside the statement.
 - Give statement section headings clear hierarchy. Show constraints as a list, put a divider before samples, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
 - Keep statement text at a readable size and limit line length on wide screens. Give the problem title visibly greater weight than the Code and Result headings.
