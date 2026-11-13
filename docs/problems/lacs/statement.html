@@ -1,9 +1,10 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
-<p>You are given two integer sequences <var>A = (A<sub>1</sub>, ..., A<sub>N</sub>)</var> and <var>B = (B<sub>1</sub>, ..., B<sub>M</sub>)</var>. Find a longest approximate common subsequence <var>C</var>. If there are multiple such sequences, print the lexicographically largest one.</p>
+<p>You are given two integer sequences <var>A</var> and <var>B</var> of lengths <var>N</var> and <var>M</var>, respectively.</p>
+<p>Choose a subsequence <var>C</var> of <var>A</var> and a subsequence <var>D</var> of <var>B</var>. They must have the same length, and their elements must satisfy <var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var> for every <var>1 &le; i &le; |C|</var>.</p>
+<p>Find the maximum possible length of <var>C</var>. If several choices have this length, print the lexicographically largest <var>C</var>.</p>
 
 <h2>Notes</h2>
-<p>A sequence <var>C</var> is an approximate common subsequence of <var>A</var> and <var>B</var> if <var>C</var> is a subsequence of <var>A</var> and there is a subsequence <var>D</var> of <var>B</var> such that <var>|C| = |D|</var> and <var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var> for every <var>1 &le; i &le; |C|</var>.</p>
 <p>A subsequence is obtained by removing zero or more elements without changing the order of the remaining elements. Among sequences of equal length, the one with the larger element at the first different position is lexicographically larger.</p>
 
 <h2>Constraints</h2>
