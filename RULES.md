@@ -73,10 +73,10 @@ This repository file is the project specification. Update the relevant section w
 
 - Use one restrained light visual system. The problem list follows the compact structure of a coding problem list without copying another site's brand or artwork.
 - Use AtCoder's Lato font for page text, loaded from Google Fonts, with `Helvetica Neue`, Arial, and sans-serif fallbacks. Set statement body text to 16px. Keep monospace for code and input/output blocks.
-- Keep the problem page in one column at every screen width; do not place the editor beside the statement. Give the statement an AtCoder-like wide reading area rather than a narrow rounded card.
+- Keep the problem page in one column at every screen width; do not place the editor beside the statement. Use a plain white page without a floating card or shadow. Limit the statement to a readable text column on desktop.
 - Give statement section headings an AtCoder-like 23px desktop hierarchy. Show constraints as a list, put dividers before Input and each sample pair, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
 - Keep statement text at 16px with generous line spacing. Give the problem title visibly greater weight than the Code and Result headings.
-- On phones, use a full-width white problem page with roughly 40px side padding for the statement and 23px statement headings. Render mathematical variables upright, without italics. Keep the editor controls usable at narrow widths.
+- On phones, use a full-width white problem page with roughly 40px side padding for the statement and 23px statement headings. Render mathematical variables upright in the same font and size as body text. Keep the editor controls usable at narrow widths.
 - Keep keyboard focus visible on links, buttons, search, and the code editor. Maintain at least 4.5:1 contrast for normal text, including status labels and pagination. Wrap long titles on narrow screens. Remove styles when their elements are removed.
 
 ## `README.md`, `.gitignore`, and publishing
