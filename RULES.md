@@ -76,7 +76,7 @@ This repository file is the project specification. Update the relevant section w
 - Keep the problem page in one column at every screen width; do not place the editor beside the statement. Give the statement an AtCoder-like wide reading area rather than a narrow rounded card.
 - Give statement section headings an AtCoder-like 23px desktop hierarchy. Show constraints as a list, put dividers before Input and each sample pair, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
 - Keep statement text at 16px with generous line spacing. Give the problem title visibly greater weight than the Code and Result headings.
-- On phones, use a full-width white problem page with roughly 40px side padding for the statement, 23px statement headings, and a serif math font for variables. Keep the editor controls usable at narrow widths.
+- On phones, use a full-width white problem page with roughly 40px side padding for the statement and 23px statement headings. Render mathematical variables upright, without italics. Keep the editor controls usable at narrow widths.
 - Keep keyboard focus visible on links, buttons, search, and the code editor. Maintain at least 4.5:1 contrast for normal text, including status labels and pagination. Wrap long titles on narrow screens. Remove styles when their elements are removed.
 
 ## `README.md`, `.gitignore`, and publishing

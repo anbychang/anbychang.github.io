@@ -88,7 +88,7 @@ main { min-height: calc(100vh - 45px); }
 }
 .statement-panel .panel-heading { padding-bottom: 20px; border-bottom: 1px solid #e8eaee; }
 .statement { color: #333; font-size: 16px; line-height: 1.7; }
-.statement var { font-family: "Cambria Math", "Times New Roman", serif; font-size: 1.1em; white-space: nowrap; }
+.statement var { font-family: "Cambria Math", "Times New Roman", serif; font-size: 1.1em; font-style: normal; white-space: nowrap; }
 .statement p { margin: 0 0 14px; }
 .statement h2 { margin: 37px 0 9px; color: #222; font-size: 23px; font-weight: 700; line-height: 1.4; }
 .statement h2:first-child { margin-top: 0; }
