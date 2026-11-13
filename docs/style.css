@@ -88,7 +88,6 @@ main { min-height: calc(100vh - 45px); }
 .statement { max-width: 78ch; color: #343b46; font-size: 16px; line-height: 1.7; }
 .statement var { white-space: nowrap; }
 .statement p { margin: 0 0 14px; }
-.statement .statement-formula { margin: 2px 0 18px; text-align: center; font-size: 17px; }
 .statement h2 { margin: 31px 0 11px; color: #202733; font-size: 18px; font-weight: 700; line-height: 1.4; }
 .statement h2:first-child { margin-top: 0; }
 .statement .statement-meta { padding-bottom: 12px; border-bottom: 1px solid #e8eaee; color: #596575; font-size: 12px; line-height: 1.8; }
