@@ -16,29 +16,43 @@ async function loadProblem(id) {
   return { problem, cases };
 }
 
-function validOutput(checker, output, test) {
-  const parts = output.trim() ? output.trim().split(/\s+/) : [];
-  if (checker === "exact") {
-    const expectedParts = test.expected.trim() ? test.expected.trim().split(/\s+/) : [];
-    return parts.length === expectedParts.length &&
-      parts.every((part, i) => part === expectedParts[i]);
-  }
-  if (checker === "two_sum") {
-    const [n, target, ...a] = test.input.trim().split(/\s+/).map(Number);
-    if (parts.length !== 2 || !parts.every((part) => /^\d+$/.test(part))) return false;
-    const i = Number(parts[0]), j = Number(parts[1]);
-    return Number.isInteger(i) && Number.isInteger(j) && i >= 1 && i < j &&
-      j <= n && a[i - 1] + a[j - 1] === target;
-  }
-  throw new Error("Unknown checker: " + checker);
-}
-
 function buildSubmission(code, cases, checker) {
   const inputs = cases.map((test) => JSON.stringify(test.input)).join(",\n");
-  const largeOutput = checker === "binary_string";
-  const expected = largeOutput ? `  const char* expected[] = {
+  if (checker !== "exact" && checker !== "two_sum") throw new Error("Unknown checker: " + checker);
+  const expected = checker === "exact" ? `  const char* expected[] = {
 ${cases.map((test) => JSON.stringify(test.expected.trim())).join(",\n")}
   };` : "";
+  const check = checker === "exact" ? `
+      std::istringstream actual(result), correct(expected[i]);
+      std::string got, want;
+      bool valid = true;
+      while (actual >> got) {
+        if (!(correct >> want) || got != want) { valid = false; break; }
+      }
+      if (correct >> want) valid = false;` : `
+      std::istringstream answer(result), test(inputs[i]);
+      int n;
+      long long target;
+      test >> n >> target;
+      std::vector<long long> values(n + 1);
+      for (int j = 1; j <= n; ++j) test >> values[j];
+      std::string first, second, extra;
+      bool valid = bool(answer >> first) && bool(answer >> second) && !(answer >> extra);
+      auto index = [n](const std::string& token) {
+        if (token.empty()) return -1;
+        int value = 0;
+        for (char digit : token) {
+          if (digit < '0' || digit > '9') return -1;
+          value = value * 10 + digit - '0';
+          if (value > n) return -1;
+        }
+        return value;
+      };
+      if (valid) {
+        int left = index(first), right = index(second);
+        valid = left >= 1 && left < right && right <= n &&
+          values[left] + values[right] == target;
+      }`;
   return `#include <bits/stdc++.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -74,20 +88,19 @@ ${expected}
     std::string result;
     char buffer[4096];
     size_t size = 0;
+    const size_t output_limit = ${checker === "exact" ? "std::max(size_t(65536), std::strlen(expected[i]) + size_t(4096))" : "65536"};
     while ((size = std::fread(buffer, 1, sizeof(buffer), output)) > 0) {
       result.append(buffer, size);
-      if (result.size() > ${largeOutput ? "std::strlen(expected[i]) + 4096" : "65536"}) break;
+      if (result.size() > output_limit) break;
     }
     const char* state = WIFSIGNALED(status) && WTERMSIG(status) == SIGALRM
       ? "TLE" : WIFEXITED(status) && WEXITSTATUS(status) == 0 ? "OK" : "RE";
-    if (result.size() > ${largeOutput ? "std::strlen(expected[i]) + 4096" : "65536"}) state = "OLE";
-${largeOutput ? `    if (std::strcmp(state, "OK") == 0) {
-      std::istringstream stream(result);
-      std::string answer, extra;
-      state = (stream >> answer) && !(stream >> extra) && answer == expected[i] ? "AC" : "WA";
-    }` : ""}
+    if (result.size() > output_limit) state = "OLE";
+    if (std::strcmp(state, "OK") == 0) {${check}
+      state = valid ? "AC" : "WA";
+    }
     std::printf("CASE %d %s ", i + 1, state);
-    for (size_t j = 0; j < (${largeOutput ? "std::strcmp(state, \"AC\") == 0 ? 0 : std::min(result.size(), size_t(240))" : "result.size()"}); ++j)
+    for (size_t j = 0; j < (std::strcmp(state, "AC") == 0 ? 0 : std::min(result.size(), size_t(240))); ++j)
       std::printf("%02x", static_cast<unsigned char>(result[j]));
     std::printf("\\n");
   }
@@ -103,7 +116,7 @@ function parseCaseResults(output, count) {
   const lines = output.replace(/\r?\n$/, "").split(/\r?\n/);
   if (lines.length !== count) throw new Error("Wrong number of judge results.");
   return lines.map((line, index) => {
-    const match = /^CASE (\d+) (OK|AC|WA|TLE|RE|OLE) ([0-9a-f]*)$/.exec(line);
+    const match = /^CASE (\d+) (AC|WA|TLE|RE|OLE) ([0-9a-f]*)$/.exec(line);
     if (!match || Number(match[1]) !== index + 1) {
       throw new Error("Invalid judge result format.");
     }
@@ -169,17 +182,10 @@ self.onmessage = async ({ data }) => {
         });
         return;
       }
-      if (outputs[k].state !== "OK" && outputs[k].state !== "AC") {
+      if (outputs[k].state !== "AC") {
         self.postMessage({
           type: "result", verdict: "RE",
           message: outputs[k].state === "OLE" ? `Test case ${k + 1} produced too much output.` : `Test case ${k + 1} failed to run.`
-        });
-        return;
-      }
-      if (outputs[k].state !== "AC" && !validOutput(problem.checker, outputs[k].output, cases[k])) {
-        self.postMessage({
-          type: "result", verdict: "WA", message: `Wrong answer on test case ${k + 1}.`,
-          detail: `Input:\n${cases[k].input.slice(0, 240)}\nYour output:\n${outputs[k].output.slice(0, 240) || "(empty)"}`
         });
         return;
       }

@@ -60,7 +60,7 @@ This repository file is the project specification. Update the relevant section w
 ## `docs/problems/<slug>/*.in` and `*.out`: tests
 
 - Pair `01.in` with `01.out`, then `02.in` with `02.out`, with no gaps. Use UTF-8 text. `cases` equals the number of pairs.
-- Ordinary single-answer problems use `checker: "exact"`. Multiple-answer problems need a named checker in `judge-worker.js`.
+- Ordinary single-answer problems use `checker: "exact"`, regardless of output length. Multiple-answer problems need a reusable named checker in `judge-worker.js`.
 - Test files are public on GitHub Pages. This site is for practice, not hidden-test contests.
 - Choose cases by failure mode: small and maximum sizes, value boundaries, duplicates, tie-breaking, empty answers where allowed, multiple valid answers, and cases that defeat a tempting wrong approach. Avoid redundant large inputs. Validate every expected output independently before publishing.
 - Aim for 40 meaningful case pairs per finished problem. The count is a target, not a reason to add duplicate inputs or omit an important edge case.
@@ -70,7 +70,7 @@ This repository file is the project specification. Update the relevant section w
 
 - Keep execution separate from page rendering. Compile each submission once through Judge0 and run each test case in a separate child process.
 - Preserve C++20, resource limits, and existing checkers unless the judging task explicitly changes them.
-- A `binary_string` problem compares its entire output in the Judge0 wrapper and returns only `AC` or `WA` plus a short preview. This permits valid answers above the ordinary 64 KiB output cap without returning large strings to the browser. Continue to accept surrounding whitespace and reject extra tokens.
+- Check every problem's output in the Judge0 wrapper. Return only per-case `AC`, `WA`, `TLE`, `RE`, or `OLE`, plus a short preview for failures. For `exact`, compare whitespace-separated tokens and allow at least the expected output length plus 4096 bytes. Keep the ordinary 64 KiB minimum limit. Never return full large outputs to the browser.
 - Keep verdicts and diagnostic messages in English. Never put secrets in client code or test data.
 
 ## `docs/style.css`: visual rules

@@ -21,6 +21,6 @@
     "category": "Bitwise Operations",
     "path": "problems/bulk-rng",
     "cases": 40,
-    "checker": "binary_string"
+    "checker": "exact"
   }
 ]
