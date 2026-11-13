@@ -46,7 +46,7 @@ This repository file is the project specification. Update the relevant section w
 - Follow the AtCoder-style order: known time limit and score metadata below the page title, then Problem Statement, Constraints, Input, Output, and numbered Sample Input and Sample Output sections. Add Notes only when a standard term needs a separate definition. Omit unknown metadata, including memory limits. Add a short explanation after a sample when it clarifies the answer.
 - State the given data, allowed choices or operations, the condition for a valid answer, and the objective in Problem Statement. Keep essential definitions and tie-breaking there; use Notes only for supporting terminology. Put numeric input limits in Constraints. Show the exact standard-input format in a code block under Input. Describe the accepted output, including multiple valid outputs or an empty answer, under Output.
 - Use short paragraphs for distinct ideas. Use a list when it makes several operations or conditions easier to scan. Do not shorten the statement by moving rules needed to solve the problem into Notes.
-- Use contest-style mathematical notation: uppercase letters for input sequences and scalar inputs, subscripts for elements, and lowercase letters for indices. Define every symbol when first used, and use it consistently through constraints, input, output, and examples. State the index base wherever indices are introduced. Do not write an entire sequence tuple in the opening when its name and length suffice.
+- Use contest-style mathematical notation. Keep the source problem's variable names and letter case when supplied; otherwise use uppercase letters for input sequences and scalar inputs, subscripts for elements, and lowercase letters for indices. Define every symbol when first used, and use it consistently through constraints, input, output, and examples. State the index base wherever indices are introduced. Do not write an entire sequence tuple in the opening when its name and length suffice.
 - Give a central mathematical condition its own display line when embedding it in a paragraph makes the statement hard to scan. Keep the surrounding sentences short, especially on phones.
 - Use short, precise English. Keep the source problem's meaning and numeric limits unless this judge deliberately defines a local variant. Do not invent time limits or constraints. Describe this site's actual standard-input and standard-output contract, even when a reference site uses a function signature.
 - In LACS, use `A` and `B` for input sequences and `C` and `D` for chosen subsequences; write corresponding elements as `C_i` and `D_i`. In Two Sum, use `A` for the sequence, `N` for its length, `X` for the target sum, and `i,j` for the answer. Do not mix code-style brackets, numeric suffixes, and prime marks into these mathematical names.
@@ -64,11 +64,13 @@ This repository file is the project specification. Update the relevant section w
 - Test files are public on GitHub Pages. This site is for practice, not hidden-test contests.
 - Choose cases by failure mode: small and maximum sizes, value boundaries, duplicates, tie-breaking, empty answers where allowed, multiple valid answers, and cases that defeat a tempting wrong approach. Avoid redundant large inputs. Validate every expected output independently before publishing.
 - Aim for 40 meaningful case pairs per finished problem. The count is a target, not a reason to add duplicate inputs or omit an important edge case.
+- For BulkRNG, cover offset collisions after repeated doubling, maximum `n`, maximum `T`, odd and even numbers of offsets, zero and one initial strings, and patterns that expose incorrect in-place updates. Check generated answers against a separate small-instance oracle before publishing.
 
 ## `docs/judge-worker.js`: execution and checking
 
 - Keep execution separate from page rendering. Compile each submission once through Judge0 and run each test case in a separate child process.
 - Preserve C++20, resource limits, and existing checkers unless the judging task explicitly changes them.
+- A `binary_string` problem compares its entire output in the Judge0 wrapper and returns only `AC` or `WA` plus a short preview. This permits valid answers above the ordinary 64 KiB output cap without returning large strings to the browser. Continue to accept surrounding whitespace and reject extra tokens.
 - Keep verdicts and diagnostic messages in English. Never put secrets in client code or test data.
 
 ## `docs/style.css`: visual rules

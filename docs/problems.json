@@ -14,5 +14,13 @@
     "path": "problems/two-sum",
     "cases": 40,
     "checker": "two_sum"
+  },
+  {
+    "id": "bulk_rng",
+    "title": "BulkRNG",
+    "category": "Bitwise Operations",
+    "path": "problems/bulk-rng",
+    "cases": 40,
+    "checker": "binary_string"
   }
 ]

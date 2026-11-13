@@ -1,0 +1,52 @@
+<p class="statement-meta">Time Limit: 3 sec per test case</p>
+<h2>Problem Statement</h2>
+<p>There are <var>n</var> bits <var>b<sub>0</sub>, b<sub>1</sub>, ..., b<sub>n−1</sub></var> arranged in a circle. You are also given <var>s</var> distinct offsets <var>d<sub>1</sub>, ..., d<sub>s</sub></var>.</p>
+<p>In one step, every bit is updated simultaneously. The new value of bit <var>i</var> is</p>
+<p><var>b<sub>(i+d<sub>1</sub>) mod n</sub> ⊕ b<sub>(i+d<sub>2</sub>) mod n</sub> ⊕ ... ⊕ b<sub>(i+d<sub>s</sub>) mod n</sub></var>,</p>
+<p>where each bit on the right is taken from before the step, and <var>⊕</var> denotes XOR. Indices start at <var>0</var>.</p>
+<p>Find the bit string after exactly <var>T</var> steps.</p>
+
+<h2>Constraints</h2>
+<ul>
+  <li><var>1 ≤ n ≤ 2 × 10<sup>5</sup></var></li>
+  <li><var>1 ≤ s ≤ min(n, 10)</var></li>
+  <li><var>1 ≤ T ≤ 10<sup>18</sup></var></li>
+  <li><var>0 ≤ d<sub>j</sub> &lt; n</var> for <var>1 ≤ j ≤ s</var>; all offsets are distinct.</li>
+  <li>The initial bit string has length <var>n</var> and contains only <var>0</var> and <var>1</var>.</li>
+</ul>
+
+<hr>
+<h2>Input</h2>
+<p>Input is given from Standard Input in the following format:</p>
+<pre class="input-format"><var>n</var> <var>s</var> <var>T</var>
+<var>d<sub>1</sub></var> ... <var>d<sub>s</sub></var>
+<var>b<sub>0</sub>b<sub>1</sub>...b<sub>n−1</sub></var></pre>
+<p>The last line is one bit string with no spaces.</p>
+
+<h2>Output</h2>
+<p>Print the resulting bit string on one line.</p>
+
+<hr>
+<h2>Sample Input 1</h2>
+<pre>5 2 1
+1 4
+10000</pre>
+<h2>Sample Output 1</h2>
+<pre>01001</pre>
+
+<hr>
+<h2>Sample Input 2</h2>
+<pre>5 2 1000000000000
+1 4
+10110</pre>
+<h2>Sample Output 2</h2>
+<pre>00110</pre>
+
+<hr>
+<h2>Sample Input 3</h2>
+<pre>4 2 3
+0 2
+1000</pre>
+<h2>Sample Output 3</h2>
+<pre>0000</pre>
+<p>After two steps, every bit is <var>0</var>, because each source bit is XORed with itself.</p>

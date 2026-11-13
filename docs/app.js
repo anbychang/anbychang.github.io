@@ -130,7 +130,7 @@ runButton.addEventListener("click", () => {
   stopButton.hidden = false;
   progress.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
-  worker = new Worker("./judge-worker.js", { type: "module" });
+  worker = new Worker("./judge-worker.js?v=bulk-rng-1", { type: "module" });
   timeout = setTimeout(() => fail("ERROR", "The judge took over 60 seconds. Please retry."), 60000);
 
   worker.onmessage = ({ data }) => {
