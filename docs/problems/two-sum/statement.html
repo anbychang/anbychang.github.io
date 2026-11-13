@@ -1,19 +1,18 @@
 <p class="statement-meta">Time Limit: 3 sec per test case</p>
 <h2>Problem Statement</h2>
-<p>Given an integer array <var>nums</var> and an integer <var>target</var>, find two distinct 1-based indices <var>i</var> and <var>j</var> such that <var>nums[i] + nums[j] = target</var>.</p>
+<p>Given an integer sequence <var>A</var> of length <var>N</var> and an integer <var>X</var>, find indices <var>i</var> and <var>j</var> such that <var>1 &le; i &lt; j &le; N</var> and <var>A<sub>i</sub> + A<sub>j</sub> = X</var>.</p>
 <p>At least one answer exists. Any valid pair is accepted.</p>
 
 <h2>Constraints</h2>
 <ul>
-  <li>The length of <var>nums</var> is between 2 and 2000.</li>
-  <li>Each value in <var>nums</var> is between <var>−10<sup>9</sup></var> and <var>10<sup>9</sup></var>.</li>
+  <li><var>2 &le; N &le; 2000</var></li>
+  <li><var>−10<sup>9</sup> &le; A<sub>i</sub> &le; 10<sup>9</sup></var> for every <var>i</var>.</li>
 </ul>
 
 <h2>Input</h2>
-<p>Let <var>N</var> be the length of <var>nums</var>.</p>
 <p>The input is given in the following format:</p>
-<pre class="input-format"><var>N</var> <var>target</var>
-<var>nums[1]</var> <var>nums[2]</var> ... <var>nums[N]</var></pre>
+<pre class="input-format"><var>N</var> <var>X</var>
+<var>A<sub>1</sub></var> <var>A<sub>2</sub></var> ... <var>A<sub>N</sub></var></pre>
 
 <h2>Output</h2>
 <p>Print <var>i</var> and <var>j</var> in increasing order, separated by a space.</p>
@@ -37,4 +36,4 @@
 327 575 473</pre>
 <h2>Sample Output 3</h2>
 <pre>1 3</pre>
-<p><var>nums[1] + nums[3] = 327 + 473 = 800</var>.</p>
+<p><var>A<sub>1</sub> + A<sub>3</sub> = 327 + 473 = 800</var>.</p>

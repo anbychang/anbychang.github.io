@@ -1,21 +1,22 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
-<p>Given two integer sequences <var>A</var> and <var>B</var>, choose subsequences <var>A′</var> and <var>B′</var> of equal length. For every position <var>i</var>, starting at 0, require <var>|A′[i] − B′[i]| &le; 1</var>.</p>
-<p>Maximize their length. If several answers have that length, output the lexicographically largest <var>A′</var>. A subsequence keeps the original order. At the first different element, the larger value wins.</p>
+<p>You are given integer sequences <var>A = (A<sub>1</sub>, ..., A<sub>N</sub>)</var> and <var>B = (B<sub>1</sub>, ..., B<sub>M</sub>)</var>.</p>
+<p>Choose a subsequence <var>C</var> of <var>A</var> and a subsequence <var>D</var> of <var>B</var>. They must have the same length, and <var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var> at every position <var>i</var>, starting from 1.</p>
+<p>Maximize the length of <var>C</var>. Among all maximum-length choices, output the lexicographically largest <var>C</var>. A subsequence keeps the original order. At the first different element, the larger value wins.</p>
 
 <h2>Constraints</h2>
 <ul>
-  <li>Each of <var>A</var> and <var>B</var> contains between 1 and 1500 elements.</li>
-  <li>Every element of <var>A</var> and <var>B</var> is an integer between 0 and 9.</li>
+  <li><var>1 &le; N, M &le; 1500</var></li>
+  <li><var>0 &le; A<sub>i</sub>, B<sub>j</sub> &le; 9</var> for all valid indices.</li>
 </ul>
 
 <h2>Input</h2>
-<p>The first line contains <var>A</var>, and the second contains <var>B</var>. Each line lists its integers separated by spaces.</p>
-<pre class="input-format"><var>A</var>
-<var>B</var></pre>
+<p>The lengths <var>N</var> and <var>M</var> are determined by the number of integers on each line.</p>
+<pre class="input-format"><var>A<sub>1</sub></var> ... <var>A<sub>N</sub></var>
+<var>B<sub>1</sub></var> ... <var>B<sub>M</sub></var></pre>
 
 <h2>Output</h2>
-<p>Print the elements of <var>A′</var> on one line, separated by spaces. If no elements can be chosen, print an empty line.</p>
+<p>Print the elements of <var>C</var> on one line, separated by spaces. If no elements can be chosen, print an empty line.</p>
 
 <hr>
 <h2>Sample Input 1</h2>
@@ -23,14 +24,14 @@
 3 5 4 5 7 3</pre>
 <h2>Sample Output 1</h2>
 <pre>2 5 7 4</pre>
-<p>The maximum length is 4. <var>A′ = (2, 5, 7, 4)</var> is larger than another valid answer <var>(2, 5, 4, 3)</var> at the first different element.</p>
+<p>The maximum length is 4. <var>C = (2, 5, 7, 4)</var> is larger than another valid answer <var>(2, 5, 4, 3)</var> at the first different element.</p>
 
 <h2>Sample Input 2</h2>
 <pre>0 9 0
 0 0 9</pre>
 <h2>Sample Output 2</h2>
 <pre>0 9</pre>
-<p>Both <var>(0, 9)</var> and <var>(0, 0)</var> can be chosen from <var>A</var> with length 2. The former is lexicographically larger.</p>
+<p>Both <var>(0, 9)</var> and <var>(0, 0)</var> are valid choices for <var>C</var> with length 2. The former is lexicographically larger.</p>
 
 <h2>Sample Input 3</h2>
 <pre>9 0 9 0
