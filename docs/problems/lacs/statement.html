@@ -1,11 +1,7 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
-<p>You are given two integer sequences <var>S1</var> and <var>S2</var>. Choose a subsequence <var>S1′</var> of <var>S1</var> and a subsequence <var>S2′</var> of <var>S2</var> such that:</p>
-<ul>
-  <li><var>S1′</var> and <var>S2′</var> have the same length.</li>
-  <li>Each pair of corresponding elements differs by at most 1.</li>
-</ul>
-<p>Maximize their length. If several choices have the same maximum length, print the lexicographically largest <var>S1′</var>. A subsequence keeps the original order. To compare two sequences lexicographically, look at their first different element; the larger one wins.</p>
+<p>Given two integer sequences <var>S1</var> and <var>S2</var>, choose subsequences <var>S1′</var> and <var>S2′</var> of equal length. For every position <var>i</var>, starting at 0, require <var>|S1′[i] − S2′[i]| &le; 1</var>.</p>
+<p>Maximize their length. If several answers have that length, output the lexicographically largest <var>S1′</var>. A subsequence keeps the original order. At the first different element, the larger value wins.</p>
 
 <h2>Constraints</h2>
 <ul>
@@ -27,8 +23,7 @@
 3 5 4 5 7 3</pre>
 <h2>Sample Output 1</h2>
 <pre>2 5 7 4</pre>
-<p>The maximum length is 4. One valid pair is <var>S1′ = (2, 5, 7, 4)</var> and <var>S2′ = (3, 5, 7, 3)</var>.</p>
-<p>Another length-4 choice for <var>S1′</var> is <var>(2, 5, 4, 3)</var>. The first difference is the third element, where <var>7 &gt; 4</var>, so the sample output is lexicographically larger.</p>
+<p>The maximum length is 4. <var>S1′ = (2, 5, 7, 4)</var> is larger than another valid answer <var>(2, 5, 4, 3)</var> at the first different element.</p>
 
 <h2>Sample Input 2</h2>
 <pre>0 9 0
@@ -42,4 +37,3 @@
 8 1 8 1</pre>
 <h2>Sample Output 3</h2>
 <pre>9 0 9 0</pre>
-<p>All four elements can be chosen: each corresponding pair differs by exactly 1.</p>
