@@ -43,9 +43,9 @@ This repository file is the project specification. Update the relevant section w
 
 ## `docs/problems/<slug>/statement.html`: problem text
 
-- Follow the AtCoder-style order: known time limit and score metadata below the page title, then Problem Statement, Constraints, Input, Output, then numbered Sample Input and Sample Output sections. Omit unknown metadata, including memory limits. Add a short explanation after each sample when the answer needs explanation.
+- Follow the AtCoder-style order: known time limit and score metadata below the page title, then a concise Problem Statement, optional Notes for definitions, Constraints, Input, Output, then numbered Sample Input and Sample Output sections. Omit unknown metadata, including memory limits. Add a short explanation after a sample only when the answer needs explanation.
 - Define terms and tie-breaking rules in Problem Statement. Put each numeric limit in a Constraints list. Show the exact standard-input format in a code block under Input. Describe the accepted output, including multiple valid outputs or an empty answer, under Output.
-- Write the opening in this order: state the given data, define a valid choice with its exact condition, then state the objective and tie-break. Use complete, formal sentences. Add definitions only when needed and remove redundant narrative.
+- Keep the Problem Statement short, as in AtCoder: state the given data and requested result directly. Put necessary definitions and tie-breaking details in Notes instead of inserting a long formal definition into the opening.
 - Use contest-style mathematical notation in statements: uppercase letters for sequences and scalar inputs, subscripts for elements, and lowercase letters for indices. Define every symbol when first used, and use it consistently through constraints, input, output, and examples. Put the objective in a separate sentence. State the index base wherever indices are introduced.
 - Give a central mathematical condition its own display line when embedding it in a paragraph makes the statement hard to scan. Keep the surrounding sentences short, especially on phones.
 - Use short, precise English. Keep the source problem's meaning and numeric limits unless this judge deliberately defines a local variant. Do not invent time limits or constraints. Describe this site's actual standard-input and standard-output contract, even when a reference site uses a function signature.
@@ -73,9 +73,9 @@ This repository file is the project specification. Update the relevant section w
 
 - Use one restrained light visual system. The problem list follows the compact structure of a coding problem list without copying another site's brand or artwork.
 - Use AtCoder's Lato font for page text, loaded from Google Fonts, with `Helvetica Neue`, Arial, and sans-serif fallbacks. Set statement body text to 16px. Keep monospace for code and input/output blocks.
-- Keep the problem page in one column at every screen width; do not place the editor beside the statement.
-- Give statement section headings clear hierarchy. Show constraints as a list, put a divider before samples, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
-- Keep statement text at a readable size and limit line length on wide screens. Give the problem title visibly greater weight than the Code and Result headings.
+- Keep the problem page in one column at every screen width; do not place the editor beside the statement. Give the statement an AtCoder-like wide reading area rather than a narrow rounded card.
+- Give statement section headings an AtCoder-like 23px desktop hierarchy. Show constraints as a list, put dividers before Input and each sample pair, and show input format and sample input/output in full-width gray preformatted blocks with readable spacing.
+- Keep statement text at 16px with generous line spacing. Give the problem title visibly greater weight than the Code and Result headings.
 - Keep keyboard focus visible on links, buttons, search, and the code editor. Maintain at least 4.5:1 contrast for normal text, including status labels and pagination. Wrap long titles on narrow screens. Remove styles when their elements are removed.
 
 ## `README.md`, `.gitignore`, and publishing
