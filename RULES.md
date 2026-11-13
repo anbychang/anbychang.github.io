@@ -62,6 +62,7 @@ This repository file is the project specification. Update the relevant section w
 - Pair `01.in` with `01.out`, then `02.in` with `02.out`, with no gaps. Use UTF-8 text. `cases` equals the number of pairs.
 - Ordinary single-answer problems use `checker: "exact"`. Multiple-answer problems need a named checker in `judge-worker.js`.
 - Test files are public on GitHub Pages. This site is for practice, not hidden-test contests.
+- Choose cases by failure mode: small and maximum sizes, value boundaries, duplicates, tie-breaking, empty answers where allowed, multiple valid answers, and cases that defeat a tempting wrong approach. Avoid redundant large inputs. Validate every expected output independently before publishing.
 
 ## `docs/judge-worker.js`: execution and checking
 

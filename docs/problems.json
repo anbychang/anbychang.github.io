@@ -4,7 +4,7 @@
     "title": "Longest Approximate Common Subsequence",
     "category": "Dynamic Programming",
     "path": "problems/lacs",
-    "cases": 8,
+    "cases": 20,
     "checker": "exact"
   },
   {
@@ -12,7 +12,7 @@
     "title": "Two Sum",
     "category": "Array",
     "path": "problems/two-sum",
-    "cases": 7,
+    "cases": 20,
     "checker": "two_sum"
   }
 ]
