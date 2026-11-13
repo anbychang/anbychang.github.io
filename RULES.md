@@ -54,6 +54,7 @@ This repository file is the project specification. Update the relevant section w
 - Keep each short mathematical expression together across line wraps; place separate `<var>` elements around expressions so no variable becomes wider than a phone screen.
 - Define the position index before using it in a condition. Avoid expanding an entire sequence as a long inline tuple when the source names and input format already make it clear.
 - Match each sample to its `.in` and `.out` pair and check any claim made in the explanation. When a tie-break rule matters, compare concrete valid choices in the sample explanation. Show sample input and output as plain preformatted text, without extra controls. Write original wording; use other judges for structure, not copied text.
+- Give a single-case problem three numbered sample input/output pairs by default, choosing cases that illustrate different behaviors. For a problem whose input contains multiple test cases, decide the sample count from that format instead of forcing three pairs.
 
 ## `docs/problems/<slug>/*.in` and `*.out`: tests
 

@@ -29,3 +29,17 @@
 <pre>2 5 7 4</pre>
 <p>The maximum length is 4. One valid pair is <var>S1′ = (2, 5, 7, 4)</var> and <var>S2′ = (3, 5, 7, 3)</var>.</p>
 <p>Another length-4 choice for <var>S1′</var> is <var>(2, 5, 4, 3)</var>. The first difference is the third element, where <var>7 &gt; 4</var>, so the sample output is lexicographically larger.</p>
+
+<h2>Sample Input 2</h2>
+<pre>0 9 0
+0 0 9</pre>
+<h2>Sample Output 2</h2>
+<pre>0 9</pre>
+<p>Both <var>(0, 9)</var> and <var>(0, 0)</var> can be chosen from <var>S1</var> with length 2. The former is lexicographically larger.</p>
+
+<h2>Sample Input 3</h2>
+<pre>9 0 9 0
+8 1 8 1</pre>
+<h2>Sample Output 3</h2>
+<pre>9 0 9 0</pre>
+<p>All four elements can be chosen: each corresponding pair differs by exactly 1.</p>
