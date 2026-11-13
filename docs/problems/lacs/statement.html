@@ -1,8 +1,11 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
-<p>You are given two integer sequences <var>S1</var> and <var>S2</var>. A subsequence is formed by deleting zero or more elements while keeping the original order.</p>
-<p>Choose a subsequence <var>S1′</var> of <var>S1</var> and a subsequence <var>S2′</var> of <var>S2</var> with the same length. The absolute difference between corresponding elements of <var>S1′</var> and <var>S2′</var> must be at most 1.</p>
-<p>First, make the common length as large as possible. Among all choices with that length, print the lexicographically largest <var>S1′</var>. Compare two sequences at their first different element; the one with the larger element is lexicographically larger.</p>
+<p>You are given two integer sequences <var>S1</var> and <var>S2</var>. Choose a subsequence <var>S1′</var> of <var>S1</var> and a subsequence <var>S2′</var> of <var>S2</var> such that:</p>
+<ul>
+  <li><var>S1′</var> and <var>S2′</var> have the same length.</li>
+  <li>Each pair of corresponding elements differs by at most 1.</li>
+</ul>
+<p>Maximize their length. If several choices have the same maximum length, print the lexicographically largest <var>S1′</var>. A subsequence keeps the original order. To compare two sequences lexicographically, look at their first different element; the larger one wins.</p>
 
 <h2>Constraints</h2>
 <ul>
