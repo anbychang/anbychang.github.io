@@ -87,7 +87,7 @@ ${largeOutput ? `    if (std::strcmp(state, "OK") == 0) {
       state = (stream >> answer) && !(stream >> extra) && answer == expected[i] ? "AC" : "WA";
     }` : ""}
     std::printf("CASE %d %s ", i + 1, state);
-    for (size_t j = 0; j < ${largeOutput ? "std::strcmp(state, \"AC\") == 0 ? 0 : std::min(result.size(), size_t(240))" : "result.size()"}; ++j)
+    for (size_t j = 0; j < (${largeOutput ? "std::strcmp(state, \"AC\") == 0 ? 0 : std::min(result.size(), size_t(240))" : "result.size()"}); ++j)
       std::printf("%02x", static_cast<unsigned char>(result[j]));
     std::printf("\\n");
   }
