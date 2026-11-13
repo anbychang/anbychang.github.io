@@ -1,3 +1,5 @@
+import { checkers } from "./checkers.js?v=1";
+
 async function loadProblem(id) {
   const catalogResponse = await fetch("./problems.json", { cache: "no-store" });
   if (!catalogResponse.ok) throw new Error("Could not load problems.");
@@ -18,41 +20,8 @@ async function loadProblem(id) {
 
 function buildSubmission(code, cases, checker) {
   const inputs = cases.map((test) => JSON.stringify(test.input)).join(",\n");
-  if (checker !== "exact" && checker !== "two_sum") throw new Error("Unknown checker: " + checker);
-  const expected = checker === "exact" ? `  const char* expected[] = {
-${cases.map((test) => JSON.stringify(test.expected.trim())).join(",\n")}
-  };` : "";
-  const check = checker === "exact" ? `
-      std::istringstream actual(result), correct(expected[i]);
-      std::string got, want;
-      bool valid = true;
-      while (actual >> got) {
-        if (!(correct >> want) || got != want) { valid = false; break; }
-      }
-      if (correct >> want) valid = false;` : `
-      std::istringstream answer(result), test(inputs[i]);
-      int n;
-      long long target;
-      test >> n >> target;
-      std::vector<long long> values(n + 1);
-      for (int j = 1; j <= n; ++j) test >> values[j];
-      std::string first, second, extra;
-      bool valid = bool(answer >> first) && bool(answer >> second) && !(answer >> extra);
-      auto index = [n](const std::string& token) {
-        if (token.empty()) return -1;
-        int value = 0;
-        for (char digit : token) {
-          if (digit < '0' || digit > '9') return -1;
-          value = value * 10 + digit - '0';
-          if (value > n) return -1;
-        }
-        return value;
-      };
-      if (valid) {
-        int left = index(first), right = index(second);
-        valid = left >= 1 && left < right && right <= n &&
-          values[left] + values[right] == target;
-      }`;
+  if (!Object.hasOwn(checkers, checker)) throw new Error("Unknown checker: " + checker);
+  const method = checkers[checker];
   return `#include <bits/stdc++.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -61,7 +30,7 @@ JudgeRunner() {
   const char* inputs[] = {
 ${inputs}
   };
-${expected}
+${method.declarations(cases)}
   FILE* input = std::fopen("judge_input.txt", "w+");
   FILE* output = std::fopen("judge_output.txt", "w+");
   if (!input || !output) std::exit(2);
@@ -88,7 +57,7 @@ ${expected}
     std::string result;
     char buffer[4096];
     size_t size = 0;
-    const size_t output_limit = ${checker === "exact" ? "std::max(size_t(65536), std::strlen(expected[i]) + size_t(4096))" : "65536"};
+    const size_t output_limit = ${method.outputLimit};
     while ((size = std::fread(buffer, 1, sizeof(buffer), output)) > 0) {
       result.append(buffer, size);
       if (result.size() > output_limit) break;
@@ -96,7 +65,7 @@ ${expected}
     const char* state = WIFSIGNALED(status) && WTERMSIG(status) == SIGALRM
       ? "TLE" : WIFEXITED(status) && WEXITSTATUS(status) == 0 ? "OK" : "RE";
     if (result.size() > output_limit) state = "OLE";
-    if (std::strcmp(state, "OK") == 0) {${check}
+    if (std::strcmp(state, "OK") == 0) {${method.check}
       state = valid ? "AC" : "WA";
     }
     std::printf("CASE %d %s ", i + 1, state);

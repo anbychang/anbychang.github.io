@@ -60,11 +60,21 @@ This repository file is the project specification. Update the relevant section w
 ## `docs/problems/<slug>/*.in` and `*.out`: tests
 
 - Pair `01.in` with `01.out`, then `02.in` with `02.out`, with no gaps. Use UTF-8 text. `cases` equals the number of pairs.
-- Ordinary single-answer problems use `checker: "exact"`, regardless of output length. Multiple-answer problems need a reusable named checker in `judge-worker.js`.
+- Ordinary single-answer problems use `checker: "exact"`, regardless of output length. For multiple-answer problems, reuse a checker from `docs/checkers.js` when its validity rule matches; otherwise add a new reusable checker there. Never create a judge for a single problem ID.
 - Test files are public on GitHub Pages. This site is for practice, not hidden-test contests.
 - Choose cases by failure mode: small and maximum sizes, value boundaries, duplicates, tie-breaking, empty answers where allowed, multiple valid answers, and cases that defeat a tempting wrong approach. Avoid redundant large inputs. Validate every expected output independently before publishing.
 - Aim for 40 meaningful case pairs per finished problem. The count is a target, not a reason to add duplicate inputs or omit an important edge case.
 - For BulkRNG, cover offset collisions after repeated doubling, maximum `n`, maximum `T`, odd and even numbers of offsets, zero and one initial strings, and patterns that expose incorrect in-place updates. Check generated answers against a separate small-instance oracle before publishing.
+
+## `docs/checkers.js`: reusable answer rules
+
+- This file is the checker registry. Each named method provides `declarations(cases)`, `outputLimit`, and `check` for the common C++ runner. `check` sets a boolean named `valid` using the case input, expected output, and submitted output as needed.
+- Choose a method by answer validity, not by the algorithm a contestant uses. Reuse `exact` for unique-answer problems, including long outputs. Reuse `two_sum` only when its index-pair rule matches the new problem exactly.
+- Add a method only when no existing method accepts precisely the intended answers. Give it a descriptive reusable name, add valid and invalid examples to `checkers.test.mjs`, and update this section. Do not branch on a problem ID inside a checker.
+
+## `checkers.test.mjs`: checker verification
+
+- Run `node checkers.test.mjs` before publishing any checker change. It compiles each checker's generated C++ rule and checks valid, invalid, and long-output behavior where applicable.
 
 ## `docs/judge-worker.js`: execution and checking
 
@@ -72,6 +82,7 @@ This repository file is the project specification. Update the relevant section w
 - Preserve C++20, resource limits, and existing checkers unless the judging task explicitly changes them.
 - Check every problem's output in the Judge0 wrapper. Return only per-case `AC`, `WA`, `TLE`, `RE`, or `OLE`, plus a short preview for failures. For `exact`, compare whitespace-separated tokens and allow at least the expected output length plus 4096 bytes. Keep the ordinary 64 KiB minimum limit. Never return full large outputs to the browser.
 - Keep verdicts and diagnostic messages in English. Never put secrets in client code or test data.
+- Select the named method from `docs/checkers.js`; keep loading, compilation, case execution, result parsing, and UI messages independent of problem IDs. When changing a checker, bump its import URL version and the worker/app URL versions so browsers receive the new code.
 
 ## `docs/style.css`: visual rules
 
