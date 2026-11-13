@@ -1,7 +1,11 @@
 <p class="statement-meta">Time Limit: 3 sec per test case</p>
 <h2>Problem Statement</h2>
 <p>You are given an integer sequence <var>A</var> of length <var>N</var> and an integer <var>X</var>.</p>
-<p>Find two indices <var>i</var> and <var>j</var> satisfying <var>1 &le; i &lt; j &le; N</var> and <var>A<sub>i</sub> + A<sub>j</sub> = X</var>.</p>
+<p>Find two indices <var>i</var> and <var>j</var> satisfying both of the following conditions:</p>
+<ul>
+  <li><var>1 &le; i &lt; j &le; N</var></li>
+  <li><var>A<sub>i</sub> + A<sub>j</sub> = X</var></li>
+</ul>
 
 <h2>Constraints</h2>
 <ul>
@@ -17,7 +21,7 @@
 <var>A<sub>1</sub></var> <var>A<sub>2</sub></var> ... <var>A<sub>N</sub></var></pre>
 
 <h2>Output</h2>
-<p>Print <var>i</var> and <var>j</var>, separated by a space. If multiple pairs satisfy the condition, print any one.</p>
+<p>Print <var>i</var> and <var>j</var> in this order, separated by a space. If there are multiple valid pairs, you may print any one of them.</p>
 
 <hr>
 <h2>Sample Input 1</h2>
@@ -25,6 +29,7 @@
 2 7 11 15</pre>
 <h2>Sample Output 1</h2>
 <pre>1 2</pre>
+<p><var>A<sub>1</sub> + A<sub>2</sub> = 2 + 7 = 9</var>.</p>
 
 <hr>
 <h2>Sample Input 2</h2>

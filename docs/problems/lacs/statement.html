@@ -1,16 +1,18 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
 <p>You are given two integer sequences <var>A</var> and <var>B</var> of lengths <var>N</var> and <var>M</var>, respectively.</p>
-<p>Choose a subsequence <var>C</var> of <var>A</var> and a subsequence <var>D</var> of <var>B</var>. They must have the same length, and their elements must satisfy <var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var> for every <var>1 &le; i &le; |C|</var>.</p>
-<p>Find the maximum possible length of <var>C</var>. If several choices have this length, print the lexicographically largest <var>C</var>.</p>
+<p>Choose a subsequence <var>C</var> of <var>A</var> and a subsequence <var>D</var> of <var>B</var>. The two subsequences must have the same length and satisfy the following condition for every <var>1 &le; i &le; |C|</var>:</p>
+<p><var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var></p>
+<p>Among all valid choices, print a sequence <var>C</var> of maximum length. If there are several such sequences, print the lexicographically largest one. A sequence is lexicographically larger if its first differing element is larger.</p>
 
 <h2>Notes</h2>
-<p>A subsequence is obtained by removing zero or more elements without changing the order of the remaining elements. Among sequences of equal length, the one with the larger element at the first different position is lexicographically larger.</p>
+<p>A subsequence is obtained by removing zero or more elements without changing the order of the remaining elements.</p>
 
 <h2>Constraints</h2>
 <ul>
   <li><var>1 &le; N, M &le; 1500</var></li>
-  <li><var>0 &le; A<sub>i</sub>, B<sub>j</sub> &le; 9</var> for all valid indices.</li>
+  <li><var>0 &le; A<sub>i</sub> &le; 9</var> for <var>1 &le; i &le; N</var>.</li>
+  <li><var>0 &le; B<sub>j</sub> &le; 9</var> for <var>1 &le; j &le; M</var>.</li>
 </ul>
 
 <hr>
@@ -29,7 +31,7 @@
 3 5 4 5 7 3</pre>
 <h2>Sample Output 1</h2>
 <pre>2 5 7 4</pre>
-<p>The maximum length is 4. <var>C = (2, 5, 7, 4)</var> is larger than another valid answer <var>(2, 5, 4, 3)</var> at the first different element.</p>
+<p>We can choose <var>C = (2, 5, 7, 4)</var> and <var>D = (3, 5, 7, 3)</var>. No valid sequence is longer than 4. Another choice is <var>C = (2, 5, 4, 3)</var>, but it is lexicographically smaller.</p>
 
 <hr>
 <h2>Sample Input 2</h2>
@@ -37,7 +39,7 @@
 0 0 9</pre>
 <h2>Sample Output 2</h2>
 <pre>0 9</pre>
-<p>Both <var>(0, 9)</var> and <var>(0, 0)</var> are valid choices for <var>C</var> with length 2. The former is lexicographically larger.</p>
+<p>Both <var>(0, 9)</var> and <var>(0, 0)</var> can be chosen as <var>C</var>, but <var>(0, 9)</var> is lexicographically larger.</p>
 
 <hr>
 <h2>Sample Input 3</h2>
