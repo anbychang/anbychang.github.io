@@ -63,6 +63,7 @@ This repository file is the project specification. Update the relevant section w
 - Ordinary single-answer problems use `checker: "exact"`. Multiple-answer problems need a named checker in `judge-worker.js`.
 - Test files are public on GitHub Pages. This site is for practice, not hidden-test contests.
 - Choose cases by failure mode: small and maximum sizes, value boundaries, duplicates, tie-breaking, empty answers where allowed, multiple valid answers, and cases that defeat a tempting wrong approach. Avoid redundant large inputs. Validate every expected output independently before publishing.
+- Aim for 40 meaningful case pairs per finished problem. The count is a target, not a reason to add duplicate inputs or omit an important edge case.
 
 ## `docs/judge-worker.js`: execution and checking
 
