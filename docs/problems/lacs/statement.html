@@ -1,8 +1,9 @@
 <p class="statement-meta">Time Limit: 3 sec per test case<br>Score: 20 points</p>
 <h2>Problem Statement</h2>
 <p>You are given integer sequences <var>A = (A<sub>1</sub>, ..., A<sub>N</sub>)</var> and <var>B = (B<sub>1</sub>, ..., B<sub>M</sub>)</var>.</p>
-<p>Choose a subsequence <var>C</var> of <var>A</var> and a subsequence <var>D</var> of <var>B</var>. They must have the same length, and <var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var> at every position <var>i</var>, starting from 1.</p>
-<p>Maximize the length of <var>C</var>. Among all maximum-length choices, output the lexicographically largest <var>C</var>. A subsequence keeps the original order. At the first different element, the larger value wins.</p>
+<p>A pair of sequences <var>(C, D)</var> is valid if <var>C</var> is a subsequence of <var>A</var>, <var>D</var> is a subsequence of <var>B</var>, <var>|C| = |D|</var>, and <var>|C<sub>i</sub> − D<sub>i</sub>| &le; 1</var> for every <var>1 &le; i &le; |C|</var>.</p>
+<p>Among all valid pairs, maximize <var>|C|</var>. If several choices attain this length, output the lexicographically largest <var>C</var>.</p>
+<p>A subsequence is obtained by deleting zero or more elements without changing their order. At the first position where two sequences differ, the one with the larger element is lexicographically larger.</p>
 
 <h2>Constraints</h2>
 <ul>
